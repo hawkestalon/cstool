@@ -1,0 +1,75 @@
+<%provide(:title, "Print Corrective Action")%>
+<style>
+    .corrective {
+        width: 90%;
+        margin: auto;
+    }
+</style>
+<div class="corrective">
+<h4>Corrective Action Report</h4><hr>
+    <table class="cAction">
+        
+        <tr>
+            <td class="cAction">
+                <b>Supervisor:</b><%=@corr.supervisor%>
+            </td>
+            <td class="cAction">
+                <b>Name:</b><%=@corr.user.name%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Date of Infraction:</b><%=@corr.date_of.to_date%>
+            </td>
+            <td class="cAction">
+                <b>Date Created:</b><%=@corr.created_at.to_date%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Type of Infraction:</b><%=@corr.typeOf%>
+            </td>
+        </tr>
+        </table>
+        <hr>
+        <table class="cAction">
+        <tr>
+            <td class="cAction">
+                <b>Description of Infraction:</b><br><%=@corr.description%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Plan for Correction:</b><br><%=@corr.plan%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Action if not Corrected:</b><br><%=@corr.action%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Employee Comments:</b><br><%=@corr.comments%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <br><br>
+                <b>Manager Signature:</b>_____________________________________________<b>Date</b>_______________
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>2nd Level Manager Signature:</b>____________________________________<b>Date</b>_______________
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Employee Signature:</b>____________________________________________<b>Date</b>_______________
+            </td>
+        </tr>
+    </table>
+    <h6>Your signature does not necessarily indicate agreement. It does mean that you have been informed of this action.</h6> 
+</div>
+

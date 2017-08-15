@@ -1,0 +1,21 @@
+<% provide(:title, "Edit User") %>
+      <h1 style="text-align: center;">Edit <%=@user.name%> </h1>
+<div class="login">
+      <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
+            <%= f.label "Name"%><br>
+            <%= f.text_field :name, placeholder: @user.name, class: "loginField" %>
+            <br><%= f.label "Email"%><br>
+            <%= f.email_field :email, placeholder: @user.email, class: "loginField" %>
+            <br><%= f.label "Team"%><br>
+            <%= f.number_field :team, placeholder: @user.team, class: "loginField" %>
+            <br><%= f.label "Role"%><br>
+            <%= f.number_field :role, placeholder: @user.role, class: "loginField" %>
+            <br><%= f.label "Certification Level"%><br>
+            <%= f.number_field :certLevel, placeholder: @user.certLevel, class: "loginField" %>
+            <br><%= f.label "Employee Number"%><br>
+            <%= f.number_field :employee, placeholder: @user.employee, class: "loginField" %>
+            <br>
+            <%= f.submit "Save Changes", class: "loginField" %>
+      <% end %>
+</div>

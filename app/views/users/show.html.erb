@@ -1,0 +1,64 @@
+<% provide(:title, "Profile") %>
+<div style="text-align:center;">
+<h2><%= @user.name%></h2>
+<h4>Certification Level <%= @user.certLevel%></h4> 
+</div>
+<% att = @user.attrecords.first%>
+<table>
+    <tr>
+        <td class="title"><b>Attendance</b></td>
+    </tr>
+    <tr>
+        <td>15min Flex: <%=att.flexone != nil ? att.flexone : "None" %>
+        <%if current_user.role == 0 || current_user.role == 2%>
+         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=one" class="profileLink">Edit</a>
+        <%end%>
+        </td>
+        <td>15min Flex: <%=att.flextwo != nil ? att.flextwo : "None" %>
+        <%if current_user.role == 0 || current_user.role == 2%>
+         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=two" class="profileLink">Edit</a>
+        <%end%>
+        </td>
+        <td>30min Flex: <%=att.flexthree != nil ? att.flexthree : "None" %> 
+        <%if current_user.role == 0 || current_user.role == 2%>
+         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=three" class="profileLink">Edit</a>
+        <%end%>
+        </td>
+    </tr>
+    <tr>
+        <td>3 Days: <%=att.days%> </td>
+        <td>PTO: <%=att.PTO%>hrs </td>
+        <td>FMLA: <%=att.FMLA%>hrs </td>
+        <%if current_user.role == 0 || current_user.role == 2%>
+            <td class="title"><a href="../attendance/edit?id=<%=@user.id%>&flex=None" class="profileLink">Edit Row</a></td>
+        <%end%>
+    </tr>
+<%# </table> %>
+
+<%# <table> %>
+    <tr>
+        <td class="title"><b>Discipline</b></td>
+    </tr>
+    <tr>
+        <td>Corrective Actions: <%=@user.corrective.count%> </td>
+        <td><a href="/corrective/show?id=<%=@user.id%>" class="profileLink">View</a>
+        <%if current_user.role == 0 || current_user.role == 2%>
+            <a href="/corrective/new?id=<%=@user.id%>" class="profileLink">Add</a></td>
+        <%end%>
+    </tr>
+    <tr>
+        <td>Verbal Warnings: <%=@verbal%></td>
+        <td> <a href="#" class="profileLink">View</a></td>
+    </tr>
+<%# </table> %>
+
+<%# <table> %>
+    <tr>
+        <td class="title"><b>Coaching</b></td>
+    </tr>
+    <tr>
+        <td><a href="#" class="profileLink">View Coaching Sessions</a></td>
+        <%# <td><a href="#" class="profileLink">Test Scores</a></td> %>
+        <%# <td><a href="#" class="profileLink">Quality Scores</a></td> %>
+    </tr>
+</table>

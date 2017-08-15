@@ -1,0 +1,35 @@
+<% provide(:title, "New Corrective Action") %>
+<div class="login corrective">
+<h3 style="text-align: center;">Add Your Comments <%=@corr.user.name%></h3>
+    <%= form_for(@corr, url: "/corrective/update?id=#{@corr.id}") do |f| %>
+            <%#= render 'shared/error_messages' %>
+            <br><%= f.label "Supervisor: "%>
+            <%= f.text_field :supervisor, value: @corr.supervisor, disabled: true%><br><br>
+            <%= f.label(:date_of, "Date of Infraction") %><br>
+            <%= f.date_select(:date_of, :order => [:month, :day, :year], disabled: true) %>
+            <br>
+            <%= f.label "Type of Infraction"%>
+            <%= f.text_field :typeOf, value: @corr.typeOf, disabled: true%>
+            <br>
+            <br><%= f.label "Description"%><br>
+            <%= f.text_area :description, placeholder: "Description of Infraction...", class: "loginField textarea" , disabled: true%>
+            <br>
+            <br><%= f.label "Plan for Correction"%><br>
+            <%= f.text_area :plan, placeholder: "Plan for correcting the issue...", class: "loginField textarea", disabled: true %>
+            <br>
+            <br><%= f.label "Action if Not Corrected"%><br>
+            <%= f.text_area :action, placeholder: "Action if the issue is not corrected...", class: "loginField textarea" , disabled: true%>
+            <br>
+            <br> 
+            <%= f.label "Employee Comments"  %>
+            <br> 
+            <%= f.text_area :comments, placeholder: "Employee comments", class: "loginField textarea" %>
+            <br>  
+            <%= f.label(:agentsig, "Agent Signature") %>
+            <br>
+            <%= f.password_field(:agentsig, class: "loginField") %>
+            <br><br>
+            <%= f.submit "Turn In", class: "loginField loginButton" %>
+    <% end %>
+    <h6>Your signature does not necessarily indicate agreement. It does mean that you have been informed of this action.</h6>
+</div>

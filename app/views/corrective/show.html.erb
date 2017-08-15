@@ -1,0 +1,61 @@
+<% provide(:title, "Corrective Actions") %>
+<h2 style="text-align:center;">Corrective Actions for <%=@user.name%></h2>
+<%if @user.corrective.count == 0%>
+    <p style="text-align:center;">There are no Corrective Actions for <%=@user.name%></p>
+<%end%>
+<%@user.corrective.each do |correc|%>
+<div class="correctiveList">
+    <table class="cAction">
+        <tr>
+            <td class="cAction">
+                <b>Supervisor:</b><%=correc.supervisor%>
+            </td>
+            <td class="cAction">
+                <b>Date Created:</b><%=correc.created_at.to_date%>
+            </td>
+            <td class="cAction">
+                <b>Date of Infraction:</b><%=correc.date_of.to_date%>
+            </td>
+            <td class="cAction">
+                <a href="/corrective/print?id=<%=correc.id%>" class="profileLink">Print</a>
+            </td>
+            <%if correc.agentsig != "Signed" && current_user.id == correc.user.id%>
+                <td class="cAction">
+                    <a href="/corrective/edit?id=<%=correc.id%>" class="profileLink">Add Comments</a>
+                </td>
+            <%else%>
+                <td class="cAction">
+                    <b>Signed:</b><span style="font-style: italic;"><%=correc.user.name%></span>
+                </td>
+            <%end%>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Type of Action:</b><%=correc.typeOf%>
+            </td>
+        </tr>
+    </table>
+    <table class="cAction">
+        <tr>
+            <td class="cAction">
+                <b>Description of Infraction:</b><br><%=correc.description%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Plan for Correction:</b><br><%=correc.plan%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Action if not Corrected:</b><br><%=correc.action%>
+            </td>
+        </tr>
+        <tr>
+            <td class="cAction">
+                <b>Employee Comments:</b><br><%=correc.comments%>
+            </td>
+        </tr>
+    </table>
+</div>
+<%end%>

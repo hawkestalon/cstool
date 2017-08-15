@@ -1,0 +1,25 @@
+<% provide(:title, "Create User") %>
+      <h1 style="text-align: center;">Create New User</h1>
+<div class="login">
+      <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
+            <%= f.label "Name"%><br>
+            <%= f.text_field :name, placeholder: "Name", class: "loginField" %>
+            <br><%= f.label "Email"%><br>
+            <%= f.email_field :email, placeholder: "Email", class: "loginField" %>
+            <br><%= f.label "Team"%><br>
+            <%= f.number_field :team, placeholder: "Team", class: "loginField" %>
+            <br><%= f.label "Role"%><br>
+            <%= f.number_field :role, placeholder: "1-Agent 2-Lead", class: "loginField" %>
+            <br><%= f.label "Certification Level"%><br>
+            <%= f.number_field :certLevel, placeholder: "Certification Level", class: "loginField" %>
+            <br><%= f.label "Employee Number"%><br>
+            <%= f.number_field :employee, placeholder: "Employee Number", class: "loginField" %>
+            <br><%= f.label "Password"%><br>    
+            <%= f.password_field :password, placeholder: "Password", class: "loginField" %>
+            <br><%= f.label "Confirm Password"%><br>
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "loginField" %>
+            <br>
+            <%= f.submit "Create User", class: "loginField" %>
+</div>
+<% end %>

@@ -1,0 +1,157 @@
+// Place all the styles related to the static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// main styles
+body{
+    margin: 0;
+    background-color: #1fbcef;
+}
+.iconLogo {
+    width: 10%;
+    padding: 10px;
+}
+.navigation {
+    background-color: rgb(32, 32, 113);
+    color: white;
+    width: 100%;
+    height: 10%;
+}
+ul {
+    list-style: none;
+    padding-bottom: 0;
+}
+li {
+    padding-right: 20px;
+    display: inline-block;
+}
+.content {
+    margin: auto;
+    width: 80%;
+    height: 1000px;
+    padding-top: 10px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0px 15px 20px 10px rgba(0, 0, 0, 0.36);
+}
+.align {
+    vertical-align: -webkit-baseline-middle;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.rank{
+    width: 40px;
+    margin-top: -10px;
+    // vertical-align: middle;
+}
+.alert {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center
+}
+.alert-success {
+    background: rgba(0, 128, 0, 0.48);
+}
+.alert-danger {
+    background: rgba(255, 0, 0, 0.48);
+}
+//home page styles
+.announcements{
+    border-style: solid;
+    border-width: 1px;
+    padding: 15px;
+    border-color: lightgray;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+.homeContent {
+    // height: 250px;
+    border-radius: 3px;
+    margin: auto;
+    border-color: lightgray;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 25px;
+    padding: 10px;
+}
+// this is for the profile page
+td {
+    padding: 3px;
+    padding-right: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.47);
+    border-radius: 2px;
+
+}
+.title{
+    border: none;
+}
+table {
+    padding: 10px;
+    // border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 3px;
+    margin: auto;
+    box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.08)
+}
+.profileLink{
+    color: #1fbcef;
+    text-decoration: underline;
+}
+//corrective action styles
+.correctiveList{
+    margin: auto;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 85%;
+}
+.cAction {
+    border: none;
+    box-shadow: none;
+    margin: initial;
+}
+//form styles
+.loginField {
+    margin-bottom: 8px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: gray;
+    border-width: 1px;
+    padding: 2px;
+}
+.loginField:focus{
+    // border-style: none;
+    // border-color: green;
+    outline: none;
+}
+.login {
+    width: 300px;
+    margin: auto;
+    border-style: solid;
+    border-width: 1px;
+    padding: 15px;
+    border-color: lightgray;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.08);
+}
+.loginButton {
+    background: white;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+.corrective {
+    width: 500px;
+    border: none;
+}
