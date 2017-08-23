@@ -15,6 +15,15 @@ class SessionsController < ApplicationController
       end
     end
   end
+  def assume
+    user = User.find(params[:id])
+    if current_user.role == 0
+      log_in(user)
+      redirect_to root_path
+    else
+      flash["danger"] = "Insufficient Permissions"
+    end
+  end
   def destroy
     session.delete(:user_id)
     @current_user = nil
