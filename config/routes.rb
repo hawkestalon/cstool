@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   patch    'attendance/update', to: 'attrecord#update'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  post   '/assume',  to: 'sessions#assume'
   delete '/logout',  to: 'sessions#destroy'
   get 'users/new'
   get 'users/show'

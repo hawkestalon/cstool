@@ -1,11 +1,19 @@
 <% provide(:title, "My Team") %>
+<% if current_user.role == 0%>
+<h1 style="text-align:center">All Users</h1>
+<%else%>
 <h1 style="text-align:center">My Team</h1>
+<%end%>
 <table>
 <% @users.each do |user|%>
     <tr>
     <td class="title"><%= user.name%></td>
     <td class="title"><%= link_to "Profile", "/users/#{user.id}", class: "profileLink" %></td>
     <td class="title"><%= link_to "Edit", "/users/#{user.id}/edit", class: "profileLink" %></td>
+    <% if current_user.role == 0%>
+    <td class="title"><%= link_to "Assume User", "/assume?id=#{user.id}", class: "profileLink", method: :post %></td>
+    <%end%>
+    <td class="title">Team <%= user.team%></td>
     </tr>
 <%end%>
 </table>

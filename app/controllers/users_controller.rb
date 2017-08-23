@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if current_user.role != 0
       @users = User.where(:team => current_user.team)
     else
-      @users
+      @users = User.all
     end
   end
   def edit
