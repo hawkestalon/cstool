@@ -26,7 +26,11 @@ class UsersController < ApplicationController
       @verbal = @user.corrective.where(:typeOf=>"Verbal Warning").count
   end
   def myTeam
-    @users = User.where(:team => current_user.team)
+    if current_user.role != 0
+      @users = User.where(:team => current_user.team)
+    else
+      @users
+    end
   end
   def edit
     @user = User.find(params[:id])
