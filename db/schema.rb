@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815202908) do
+ActiveRecord::Schema.define(version: 20170823221531) do
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "body"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "attrecords", force: :cascade do |t|
     t.integer "PTO"

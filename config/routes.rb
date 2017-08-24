@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'announcements/new'
+
+  get 'announcements/edit'
+  post 'announcements/create'
+
+  get 'announcements/delete'
+
   get 'corrective/new'
 
   get 'corrective/show'
