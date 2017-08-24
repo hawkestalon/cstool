@@ -2,12 +2,12 @@
 
 <div class="homeContent">
     <h2 style="text-align: center">Announcements</h2>
-    <div class="announcements">There will be no Friday Training on Friday, July 21.</div>
-    <div class="announcements">The fridge will be cleaned out friday. Please remove anything that you want to keep before then. </div>
-    <div class="announcements">New Hire Training will Start soon.</div>
-    <div class="announcements">From now on, all friday training scores will be tracked and will be used to evaluate every agent.</div>
-    <div class="announcements">Please put any notes indicating the customer is escalated only in internal notes.</div>
-    <div class="announcements">There will be no Friday Training on Friday, July 21.</div>
+    <%if current_user.role == 0%>
+        <a href="/announcements/new" class="profileLink">New Announcement</a><br><br>
+    <%end%>
+    <% @announcements.each do |announce|%>
+        <div class="announcements"><%= announce.body%></div>
+    <% end %>
 </div>
 <div class="homeContent">
     Newsletter

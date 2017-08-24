@@ -1,0 +1,8 @@
+<% provide(:title, "New Announcment")%>
+<div class="login corrective">
+    <h3 style="text-align: center;">New Announcement</h3>
+    <%= form_for(@announcement, url: "/announcements/create?id=#{current_user.id}") do |f| %>
+            <%= f.text_area :body, placeholder: "Announcement text....", class: "loginField textarea" %><br><br>
+            <%= f.submit "Save Announcement", class: "loginField loginButton" %>
+    <% end %>
+</div>
