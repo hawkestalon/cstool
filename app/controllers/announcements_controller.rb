@@ -14,10 +14,26 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
+    @announcement = Announcement.find(params[:id])
+  end
+
+  def update
+    @announcement = Announcement.find(params[:id])
+    if @announcement.update(user_params)
+      flash[:success] = "Announcement Updated"
+      redirect_to root_path
+    else
+      flash[:danger] = "Uh oh, No joy. "
+      render 'edit'
+    end
   end
 
   def delete
+    @announcement = Announcement.find(params[:id])
+    @announcement.delete
+    redirect_to root_path
   end
+  
   private
   def user_params
     params.require(:announcement).permit(:body, :date)

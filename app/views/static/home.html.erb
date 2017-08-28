@@ -6,7 +6,12 @@
         <a href="/announcements/new" class="profileLink">New Announcement</a><br><br>
     <%end%>
     <% @announcements.each do |announce|%>
-        <div class="announcements"><%= announce.body%></div>
+        <div class="announcements"><%= announce.body%>  
+            <% if current_user.role == 0%>
+            <span style="float: right;"><%= link_to "delete  ", "announcements/delete?id=#{announce.id}", method: :delete, class: :profileLink%></span>   
+            <a href="/announcements/edit?id=<%=announce.id%>" style="float: right; padding-right: 5px;" class="profileLink">edit</a>
+            <% end %>
+        </div>
     <% end %>
 </div>
 <div class="homeContent">

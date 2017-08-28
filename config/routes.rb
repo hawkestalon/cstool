@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   get 'announcements/new'
-
   get 'announcements/edit'
+  patch 'announcements/update'
   post 'announcements/create'
-
-  get 'announcements/delete'
+  delete 'announcements/delete'
 
   get 'corrective/new'
-
   get 'corrective/show'
   post 'corrective/create'
   get 'corrective/edit'
@@ -16,14 +14,17 @@ Rails.application.routes.draw do
 
   get    'attendance/edit', to: 'attrecord#edit'
   patch    'attendance/update', to: 'attrecord#update'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   post   '/assume',  to: 'sessions#assume'
   delete '/logout',  to: 'sessions#destroy'
+
   get 'users/new'
   get 'users/show'
   get 'users/edit'
   get 'myTeam', to: 'users#myTeam'
+
   root to: 'static#home'
   resources :users
 

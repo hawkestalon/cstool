@@ -1,2 +1,8 @@
-<h1>Announcements#edit</h1>
-<p>Find me in app/views/announcements/edit.html.erb</p>
+<% provide(:title, "Edit Announcment")%>
+<div class="login corrective">
+    <h3 style="text-align: center;">New Announcement</h3>
+    <%= form_for(@announcement, url: "/announcements/update?id=#{current_user.id}") do |f| %>
+            <%= f.text_area :body, placeholder: "Announcement text....", class: "loginField textarea" %><br><br>
+            <%= f.submit "Update Announcement", class: "loginField loginButton" %>
+    <% end %>
+</div>
