@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       redirect_to "/login"
     end
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -21,10 +22,12 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
   def show
       @user = User.find(params[:id])
       @verbal = @user.corrective.where(:typeOf=>"Verbal Warning").count
   end
+
   def myTeam
     if current_user.role != 0
       @users = User.where(:team => current_user.team)
@@ -32,9 +35,16 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
+
+  def teamChart
+    @users = User.all
+    
+  end
+
   def edit
     @user = User.find(params[:id])
   end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -44,6 +54,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :role, :team, :password, :certLevel, :employee, :password_confirmation)
