@@ -37,8 +37,14 @@ class UsersController < ApplicationController
   end
 
   def teamChart
-    @users = User.all
-    
+    @leads = User.where(:role => 2)
+    @team = User.group(:team).count
+    # array of users by team
+    @users = []
+    @team.each do |key, value|
+      temp = User.where(:team => key)
+      @users.push(temp)
+    end
   end
 
   def edit

@@ -2,4 +2,30 @@
 
 <div class="login" style="width: 75%;">
     <h2 style="text-align: center">Team Chart</h2>
+    <table style="box-shadow: none;">
+        <tr>
+            <td style="border-style: none;">
+                <a href="/users/new" class="profileLink">New User</a>
+            </td>
+        </tr>
+        <tr>
+        <%@users.each do |array|%>
+            <td>
+                <table style="box-shadow: none;">
+                    <%array.each do |user|%>
+                        <tr>
+                            <%if user.role == 2%>
+                                <td style="background-color: lightgreen; border-style: none;">
+                            <%else%>
+                                <td style="border-style: none;">
+                            <%end%>
+                                <%= user.name%>
+                            </td>
+                        </tr>
+                    <%end%>
+                </table>
+            </td>            
+        <%end%>
+        </tr>
+    </table>
 </div>
