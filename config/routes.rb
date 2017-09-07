@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  #announcements route
+  get 'coaching/new'
+  post "coaching/create"
+  get 'coaching/edit'
+  patch 'coaching/update'
+  delete 'coaching/destroy'
+  get 'coaching/show'
+
+  #announcements routes
   get 'announcements/new'
   get 'announcements/edit'
   patch 'announcements/update'
   post 'announcements/create'
   delete 'announcements/delete'
 
-  #corrective actions route
+  #corrective actions routes
   get 'corrective/new'
   get 'corrective/show'
   post 'corrective/create'
