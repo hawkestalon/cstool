@@ -1,0 +1,34 @@
+<% provide(:title, "Coaching Sessions") %>
+      <h1 style="text-align: center;">Coaching Sessions for <%=@user.name%></h1>
+<%# <div class="login" style="width: 85%;"> %>
+    <%if @coaching.size != 0%>
+        <%@coaching.each do |coach|%>
+            <div class="correctiveList">
+            <table class="cAction">
+                <tr>
+                    <td class="cAction">
+                        <b>Date of Session</b><br><%=coach.created_at.to_formatted_s(:long)%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cAction">
+                        <b>Session Details</b><br><%=coach.details%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cAction">
+                        <b>Goals set:</b><br><%=coach.goals%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cAction">
+                        <b>Reminder to be sent:</b><br><%=coach.reminder%>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        <%end%>
+    <%else%>
+        <h4 style="text-align: center;">There are no coaching sessions for this agent yet.</h4>
+    <%end%>
+<%# </div> %>

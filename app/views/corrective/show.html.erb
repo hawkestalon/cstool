@@ -23,9 +23,13 @@
                 <td class="cAction">
                     <a href="/corrective/edit?id=<%=correc.id%>" class="profileLink">Add Comments</a>
                 </td>
-            <%else%>
+            <%elsif correc.agentsig != nil%>
                 <td class="cAction">
                     <b>Signed:</b><span style="font-style: italic;"><%=correc.user.name%></span>
+                </td>
+            <%else%>
+                <td class="cAction">
+                    <b>Signed:</b><span style="font-style: italic;">Not Signed Yet</span>
                 </td>
             <%end%>
         </tr>
