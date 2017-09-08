@@ -30,9 +30,9 @@ class UsersController < ApplicationController
 
   def myTeam
     if current_user.role != 0
-      @users = User.where(:team => current_user.team)
+      @users = User.where(:team => current_user.team).order(:name)
     else
-      @users = User.all
+      @users = User.order(:name)
     end
   end
 
