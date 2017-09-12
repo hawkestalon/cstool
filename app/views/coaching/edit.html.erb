@@ -1,2 +1,18 @@
-<h1>Coaching#edit</h1>
-<p>Find me in app/views/coaching/edit.html.erb</p>
+
+<% provide(:title, "Edit Coaching Session") %>
+      <h1 style="text-align: center;">Edit Coaching Session for <%@user.name%> </h1>
+<div class="login">
+      <%= form_for(@coach, url: "/coaching/update?id=#{@coach.id}&user=#{@user.id}") do |f| %>
+            <%= f.label "Coaching Session Details"%><br>
+            <%= f.text_area :details, placeholder: "What did you talk about?", class: "textarea" %>
+            <br>
+            <%= f.label "Goals"%><br>
+            <%= f.text_area :goals, placeholder: "What goals were set?", class: "textarea" %>
+            <br>
+            <%= f.label "Reminder for Later"%><br>
+            <%= f.text_area :reminder, placeholder: "What needs to be reminded?", class: "textarea" %>
+            <%= f.number_field :user_id, value: "#{@user.id}", class: "hidden" %>
+            <br>
+            <%= f.submit "Save Coaching Session", class: "loginField" %>
+</div>
+<% end %>
