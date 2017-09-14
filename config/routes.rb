@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'ato/new'
+  post 'ato/create'
+  get 'ato/edit'
+  patch 'ato/update'
+  get 'ato/show'
+  delete 'ato/destroy'
+
   get 'coaching/new'
   post "coaching/create"
   get 'coaching/edit'
