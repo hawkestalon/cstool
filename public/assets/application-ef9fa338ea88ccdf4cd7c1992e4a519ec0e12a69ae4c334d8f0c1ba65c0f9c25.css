@@ -1,0 +1,213 @@
+/* line 7, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+body {
+  margin: 0;
+  background-color: #1fbcef;
+}
+
+/* line 11, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.iconLogo {
+  width: 10%;
+  padding: 10px;
+}
+
+/* line 15, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.navigation {
+  background-color: #202071;
+  color: white;
+  width: 100%;
+  height: 10%;
+}
+
+/* line 21, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+ul {
+  list-style: none;
+  padding-bottom: 0;
+}
+
+/* line 25, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+li {
+  padding-right: 20px;
+  display: inline-block;
+}
+
+/* line 29, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.content {
+  margin: auto;
+  width: 80%;
+  height: 1000px;
+  padding-top: 10px;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0px 15px 20px 10px rgba(0, 0, 0, 0.36);
+}
+
+/* line 38, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.align {
+  vertical-align: -webkit-baseline-middle;
+}
+
+/* line 41, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 45, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.rank {
+  width: 40px;
+  margin-top: -10px;
+}
+
+/* line 50, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.alert {
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* line 55, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.alert-success {
+  background: rgba(0, 128, 0, 0.48);
+}
+
+/* line 58, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.alert-danger {
+  background: rgba(255, 0, 0, 0.48);
+}
+
+/* line 62, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.announcements {
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  border-color: lightgray;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+/* line 70, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.homeContent {
+  border-radius: 3px;
+  margin: auto;
+  border-color: lightgray;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+/* line 81, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+td {
+  padding: 3px;
+  padding-right: 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(128, 128, 128, 0.47);
+  border-radius: 2px;
+}
+
+/* line 90, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.title {
+  border: none;
+}
+
+/* line 93, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+table {
+  padding: 10px;
+  border-width: 1px;
+  border-color: lightgray;
+  border-radius: 3px;
+  margin: auto;
+  box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* line 102, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.profileLink {
+  color: #1fbcef;
+  text-decoration: underline;
+}
+
+/* line 107, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.correctiveList {
+  margin: auto;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  width: 85%;
+}
+
+/* line 115, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.cAction {
+  border: none;
+  box-shadow: none;
+  margin: initial;
+}
+
+/* line 121, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.loginField {
+  margin-bottom: 8px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: gray;
+  border-width: 1px;
+  padding: 2px;
+}
+
+/* line 129, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.loginField:focus {
+  outline: none;
+}
+
+/* line 134, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.login {
+  width: 300px;
+  margin: auto;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  border-color: lightgray;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* line 144, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.loginButton {
+  background: white;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+/* line 149, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+/* line 154, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.corrective {
+  width: 500px;
+  border: none;
+}
+
+/* line 158, C:/wamp/www/work/rails/cstool/app/assets/stylesheets/static.scss */
+.hidden {
+  visibility: hidden;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

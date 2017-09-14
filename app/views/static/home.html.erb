@@ -2,20 +2,12 @@
 
 <div class="homeContent">
     <h2 style="text-align: center">Announcements</h2>
-<<<<<<< HEAD
-    <%if current_user.role == 0%>
-=======
     <% if current_user != nil && current_user.role == 0%>
->>>>>>> 876cf651fa37dafc3548cee9c667868f43b0adf5
         <a href="/announcements/new" class="profileLink">New Announcement</a><br><br>
     <%end%>
     <% @announcements.each do |announce|%>
         <div class="announcements"><%= announce.body%>  
-<<<<<<< HEAD
-            <% if current_user.role == 0%>
-=======
             <% if current_user != nil && current_user.role == 0%>
->>>>>>> 876cf651fa37dafc3548cee9c667868f43b0adf5
             <span style="float: right;"><%= link_to "delete  ", "announcements/delete?id=#{announce.id}", method: :delete, class: :profileLink%></span>   
             <a href="/announcements/edit?id=<%=announce.id%>" style="float: right; padding-right: 5px;" class="profileLink">edit</a>
             <% end %>
