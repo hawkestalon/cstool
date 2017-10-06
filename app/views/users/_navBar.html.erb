@@ -1,13 +1,13 @@
 <ul>
     <li><%= link_to "Home", root_path %></li>
-    <%if @current_user != nil && @current_user.role != 1 %>
+    <%if current_user != nil && current_user.role != 1 %>
         <li><%= link_to "Organize", "/teamchart"%></li>
         <li>Supervise</li>
         <li>Administrate</li>
         <li><%= link_to "My Agents", myTeam_path%></li>
     <% end %>
     <li>Documents</li>
-    <%if @current_user != nil%>    
+    <%if current_user != nil%>    
         <li style="float: right;"><%= image_tag("rank#{@current_user.certLevel}.png", :alt => "rss feed", class: "rank") %></li> 
         <li style="float: right;"><%= link_to @current_user.name, "/users/#{@current_user.id}"%></li>
         <li style="float: right;"><%= link_to "Logout", logout_path, method: :delete%></li>

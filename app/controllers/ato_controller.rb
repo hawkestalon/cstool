@@ -3,6 +3,7 @@ class AtoController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  #Should this method also subtract the PTO from a user's attrecord?
   def create
     @user = User.find(params[:id])
     @ato = @user.ato.build(user_params)
@@ -20,7 +21,14 @@ class AtoController < ApplicationController
   end
 
   def update
-
+    @ato = Ato.find(params[:id])
+    if @ato.update_attributes(user_params)
+      flash[:success] = "Approved Time Off Update Complete"
+      redirect_to root_path
+    else 
+      flash[:danger] = "Update Failed"
+      render 'edit'
+    end
   end
 
   def show
@@ -28,7 +36,14 @@ class AtoController < ApplicationController
   end
 
   def destroy
+    @ato = Ato.find(params[:id])
+    if @ato.delete
+      flash[:success] = "Aprroved Time Off Deleted"
+    else
+      flash[:danger] = "Error. Approved Time Off Not Deleted"
+    end
   end
+
   private
   def user_params
       params.require(:ato).permit(:a_date, :reason, :hours)
