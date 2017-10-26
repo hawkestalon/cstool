@@ -166,3 +166,20 @@ table {
 .hidden {
     visibility: hidden;
 }
+.header {
+    text-align: center;
+}
+.headerLink {
+    width: 900px;
+    border: none;
+}
+.personList {
+    border-style: none;
+    box-shadow: none;
+    margin: auto;
+    padding-right: 15px;
+    text-align: left;
+}
+.noPadding {
+    padding: none;
+}

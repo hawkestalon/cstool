@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'announcements/delete'
 
   #corrective actions routes
+  get '/discipline', to: 'corrective#link'
   get 'corrective/new'
   get 'corrective/show'
   post 'corrective/create'
