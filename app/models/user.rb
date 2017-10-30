@@ -6,4 +6,5 @@ class User < ApplicationRecord
     has_secure_password
     has_many :attrecords, dependent: :destroy
     has_many :corrective, dependent: :destroy
+    has_many :ato, dependent: :destroy
 end

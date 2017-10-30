@@ -1,0 +1,15 @@
+<% provide(:title, "Edit Attendance") %>
+      <h3 style="text-align: center;">Edit Flexes for <%=@user.name%></h3>
+<div class="login">
+      <%= form_for(@user.attrecords.first, url: "/attendance/update?id=#{@user.id}", 'data-no-turbolink' => true) do |f| %>
+            <%= render 'shared/error_messages' %>
+                <%= f.label(:flexone, "15 Min Flex One:") %><br>
+                <%= f.date_select(:flexone, :order => [:month, :day, :year]) %><br><br>
+                <%= f.label(:flextwo,"15 Min Flex Two:")%><br>
+                <%= f.date_select(:flextwo, :order => [:month, :day, :year]) %><br><br>
+                <%= f.label(:flexthree, "30 Min Flex:")%><br>
+                <%= f.date_select(:flexthree, :order => [:month, :day, :year]) %><br><br>
+            <br>
+            <%= f.submit "Update Attendance", class: "loginField loginButton" %>
+</div>
+<% end %>

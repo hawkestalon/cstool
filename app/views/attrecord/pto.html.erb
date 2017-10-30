@@ -1,0 +1,15 @@
+<% provide(:title, "Edit Attendance") %>
+      <h3 style="text-align: center;">Edit PTO/FMLA/3Days for <%=@user.name%></h3>
+<div class="login">
+      <%= form_for(@user.attrecords.first, url: "/attendance/update?id=#{@user.id}", 'data-no-turbolink' => true) do |f| %>
+            <%= render 'shared/error_messages' %>
+                <%= f.label(:PTO, 'PTO:')%><br>
+                <%= f.number_field :PTO, placeholder: "", class: "loginField" %><br>
+                <br><%= f.label(:FMLA, "FMLA:")%><br>
+                <%= f.number_field :FMLA, class: "loginField" %><br>
+                <br><%= f.label(:days, "3 Days:")%><br>
+                <%= f.number_field :days, class: "loginField" %><br>
+            <br>
+            <%= f.submit "Update Attendance", class: "loginField loginButton" %>
+</div>
+<% end %>

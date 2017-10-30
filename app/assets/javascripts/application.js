@@ -12,7 +12,5 @@
 //
 //= require rails-ujs
 //= require turbolinks
-<<<<<<< HEAD
-//= require tree
-=======
->>>>>>> 812a4f1b6a3b85c7fdac6091bc218e18c415c487
+
+

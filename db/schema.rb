@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170906234441) do
+=======
+ActiveRecord::Schema.define(version: 20170913215722) do
+>>>>>>> c30a2f31bcfc4c4094d853756eebc2341a038ff2
 
   create_table "announcements", force: :cascade do |t|
     t.string "body"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "atos", force: :cascade do |t|
+    t.string "reason"
+    t.datetime "a_date"
+    t.integer "hours"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_atos_on_user_id"
   end
 
   create_table "attrecords", force: :cascade do |t|
