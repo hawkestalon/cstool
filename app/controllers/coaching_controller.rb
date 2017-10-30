@@ -32,6 +32,15 @@ class CoachingController < ApplicationController
     end
   end
 
+  def link
+    if current_user.role == 0
+      @users = User.all.order(:name)
+    else
+      @users = User.where(:team => current_user.team).order(:name)
+    end
+  end
+
+  #this still needs to be written
   def destroy
   end
 

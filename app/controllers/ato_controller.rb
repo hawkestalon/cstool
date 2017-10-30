@@ -33,6 +33,11 @@ class AtoController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if Ato.exists?(:user_id => @user.id)
+      @ato = Ato.where(:user_id => @user.id)
+    else 
+      @ato = nil
+    end
   end
 
   def destroy

@@ -3,8 +3,8 @@
     <%if current_user != nil && current_user.role != 1 %>
         <li><%= link_to "Organize", "/teamchart"%></li>
         <li><%= link_to "Discipline", "/discipline"%></li>
-        <li>Attendance</li>
-        <li>Coaching</li>
+        <li><%= link_to "Attendance", "/attendance"%></li>
+        <li><%= link_to "Coaching", "/coaching"%></li>
         <%if current_user.role == 0%>
             <li><%= link_to "All Agents", myTeam_path%></li>
         <%else%>

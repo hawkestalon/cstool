@@ -1,0 +1,103 @@
+<script type="text/javascript">
+    function flexes(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "attendance/flexes/?id= " + userId;
+    }
+    function PTO(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "attendance/pto/?id= " + userId;
+    }
+    function ATO(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "ato/new/?id= " + userId;
+    }
+    function missedHours(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "corrective/new/?id= " + userId;
+    }
+</script>
+
+<% provide(:title, "Attendance") %>
+<h1 class="header">Attendance</h1>
+<div class="login headerLink">
+    <h3 class="header">Flexes</h3>
+    <div class="header">
+        <span>Manage Flexes for:</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=flexes()>Go</button>
+    </div>
+     <h3 class="header">PTO/FMLA/3Days</h3>
+    <div class="header">
+        <span>Manage PTO/FMLA/3 Days for:</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=PTO()>Go</button>
+    </div>
+     <h3 class="header">Approved Time Off</h3>
+    <div class="header">
+        <span>Add Approved Time Off for:</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=ATO()>Go</button>
+    </div>
+     <h3 class="header">Missed Hours</h3>
+    <div class="header">
+        <span>Manage Missed Hours for:</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=missedHours() disabled>Go</button>
+    </div>
+    <h3 class="header">Team Overview</h3>
+    <div class="header">
+        <table class="personList" style="margin: auto;">
+            <tr>
+                <td class="personList"><b>Name</b></td>
+                <td class="personList"><b># of Flexes</b></td>
+                <td class="personList"><b>PTO</b></td>
+                <td class="personList"><b>FMLA</b></td>
+                <td class="personList"><b>3 Days</b></td>
+                <td class="personList"><b>Approved Time Off</b></td>
+                <td class="personList"><b>Missed Hours</b></td>
+            </tr>
+        <%@users.each do |user|%>
+            <tr>
+                <td class="personList"><%=user.name%></td>
+                <%att = user.attrecords.first%>
+                <%flexes = 3%>
+                <%flexes -= 1 unless att.flexone == nil%>
+                <%flexes -= 1 unless att.flextwo == nil%>
+                <%flexes -= 1 unless att.flexthree == nil%>
+                <%=Ato.exists?(:user_id => user.id) ? ato = true : ato = false %>
+                <td class="personList" style="text-align: center;"><%= flexes %></td>
+                <td class="personList" style="text-align: center;"><%=att.PTO != 0 ? "#{att.PTO}hrs" : "None" %></td>
+                <td class="personList" style="text-align: center;"><%=att.FMLA != 0 ? "#{att.FMLA}hrs" : "None" %></td>
+                <%if att.days != 0%>
+                    <td class="personList" style="text-align: center;"><%=att.days%> days</td>
+                <%else%>
+                    <td class="personList" style="text-align: center;">None</td>
+                <%end%>
+                <td class="personList" style="text-align: center;"><%=ato ? link_to("View Time Off", "/ato/show/?id=#{user.id}", class: "profileLink") : "None" %></td>
+                <%# Missed hours does not yet exist %>
+                <td class="personList" style="text-align: center;">None</td>
+            </tr>
+        <%end%>
+        </table>
+    </div>
+</div>

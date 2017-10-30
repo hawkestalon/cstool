@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'ato/show'
   delete 'ato/destroy'
 
+  get '/coaching', to: 'coaching#link'
   get 'coaching/new'
   post "coaching/create"
   get 'coaching/edit'
@@ -30,6 +31,9 @@ Rails.application.routes.draw do
   get 'corrective/print'
 
   #attendance routes
+  get 'attendance/pto', to: 'attrecord#pto'
+  get 'attendance/flexes', to: 'attrecord#flexes'
+  get '/attendance', to: 'attrecord#link'
   get    'attendance/edit', to: 'attrecord#edit'
   patch    'attendance/update', to: 'attrecord#update'
 
