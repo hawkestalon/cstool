@@ -1,7 +1,19 @@
 class AttrecordController < ApplicationController
     before_action :logged_in_user, only: [:edit, :update]
     before_action :correct_user, only: [:edit, :update]
+=begin
+The logged_in_user and correct_user functions can be found
+in the sessions helper file. 
 
+Attrecord contains a lot of information that is best updated partially.
+Flexes updated on their own.
+PTO/FMLA/3Days updated together. 
+The attrecord database should only have one record per user. This simplifies
+a lot of the maintenance and retrieving records. This may make it difficult
+to keep long term records, if they are needed. 
+
+Optimizations have not been made. 
+=end
     def edit
         @user = User.find(params[:id])
         @att = @user.attrecords.first

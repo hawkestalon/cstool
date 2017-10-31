@@ -1,4 +1,9 @@
 class AnnouncementsController < ApplicationController
+=begin
+This controller contains the methods for creating, updating,
+and deleting announcements.
+This controller contains only basic methods that work as you would expect. 
+=end
   def new
     @announcement = Announcement.new
   end
@@ -6,7 +11,7 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = Announcement.new(user_params)
     if @announcement.save
-      flash[:success] = "Announcment Saved"
+      flash[:success] = "Announcement Saved"
       redirect_to root_path
     else
       render 'new'
