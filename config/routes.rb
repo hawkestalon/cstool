@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1bc5f33540dd82f69b704c7a3136419346fb7167
   get 'ato/new'
   post 'ato/create'
   get 'ato/edit'
@@ -22,7 +27,14 @@ Rails.application.routes.draw do
   delete 'announcements/delete'
 
   #corrective actions routes
+<<<<<<< HEAD
   get '/discipline', to: 'corrective#link'
+=======
+
+
+  get '/discipline', to: 'corrective#link'
+
+>>>>>>> 1bc5f33540dd82f69b704c7a3136419346fb7167
   get 'corrective/new'
   get 'corrective/show'
   post 'corrective/create'
