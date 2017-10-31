@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
+
+
   get 'ato/new'
   post 'ato/create'
   get 'ato/edit'
@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   delete 'ato/destroy'
 
   get '/coaching', to: 'coaching#link'
->>>>>>> c30a2f31bcfc4c4094d853756eebc2341a038ff2
   get 'coaching/new'
   post "coaching/create"
   get 'coaching/edit'
@@ -25,10 +24,10 @@ Rails.application.routes.draw do
   delete 'announcements/delete'
 
   #corrective actions routes
-<<<<<<< HEAD
-=======
+
+
   get '/discipline', to: 'corrective#link'
->>>>>>> c30a2f31bcfc4c4094d853756eebc2341a038ff2
+
   get 'corrective/new'
   get 'corrective/show'
   post 'corrective/create'

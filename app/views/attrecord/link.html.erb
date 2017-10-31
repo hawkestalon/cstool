@@ -1,21 +1,21 @@
 <script type="text/javascript">
     function flexes(){
-        var userId = document.getElementById('userId').value;
+        var userId = document.getElementById('flexes').value;
         console.log(userId);
         window.location = "attendance/flexes/?id= " + userId;
     }
     function PTO(){
-        var userId = document.getElementById('userId').value;
+        var userId = document.getElementById('pto').value;
         console.log(userId);
         window.location = "attendance/pto/?id= " + userId;
     }
     function ATO(){
-        var userId = document.getElementById('userId').value;
+        var userId = document.getElementById('ato').value;
         console.log(userId);
         window.location = "ato/new/?id= " + userId;
     }
     function missedHours(){
-        var userId = document.getElementById('userId').value;
+        var userId = document.getElementById('missed').value;
         console.log(userId);
         if(false){
             window.location = "corrective/new/?id= " + userId;
@@ -29,7 +29,7 @@
     <h3 class="header">Flexes</h3>
     <div class="header">
         <span>Manage Flexes for:</span>
-        <select style="margin: auto;" id="userId">
+        <select style="margin: auto;" id="flexes">
         <%@users.each do |user|%>
             <option value=" <%=user.id%>"><%=user.name%></option>
         <%end%>
@@ -39,7 +39,7 @@
      <h3 class="header">PTO/FMLA/3Days</h3>
     <div class="header">
         <span>Manage PTO/FMLA/3 Days for:</span>
-        <select style="margin: auto;" id="userId">
+        <select style="margin: auto;" id="pto">
         <%@users.each do |user|%>
             <option value=" <%=user.id%>"><%=user.name%></option>
         <%end%>
@@ -49,7 +49,7 @@
      <h3 class="header">Approved Time Off</h3>
     <div class="header">
         <span>Add Approved Time Off for:</span>
-        <select style="margin: auto;" id="userId">
+        <select style="margin: auto;" id="ato">
         <%@users.each do |user|%>
             <option value=" <%=user.id%>"><%=user.name%></option>
         <%end%>
@@ -59,7 +59,7 @@
      <h3 class="header">Missed Hours</h3>
     <div class="header">
         <span>Manage Missed Hours for:</span>
-        <select style="margin: auto;" id="userId">
+        <select style="margin: auto;" id="missed">
         <%@users.each do |user|%>
             <option value=" <%=user.id%>"><%=user.name%></option>
         <%end%>
@@ -68,7 +68,7 @@
     </div>
     <h3 class="header">Team Overview</h3>
     <div class="header">
-        <table class="personList" style="margin: auto;">
+         <table class="personList" style="margin: auto;">
             <tr>
                 <td class="personList"><b>Name</b></td>
                 <td class="personList"><b># of Flexes</b></td>
@@ -86,7 +86,7 @@
                 <%flexes -= 1 unless att.flexone == nil%>
                 <%flexes -= 1 unless att.flextwo == nil%>
                 <%flexes -= 1 unless att.flexthree == nil%>
-                <%=Ato.exists?(:user_id => user.id) ? ato = true : ato = false %>
+                <%Ato.exists?(:user_id => user.id) ? ato = true : ato = false %>
                 <td class="personList" style="text-align: center;"><%= flexes %></td>
                 <td class="personList" style="text-align: center;"><%=att.PTO != 0 ? "#{att.PTO}hrs" : "None" %></td>
                 <td class="personList" style="text-align: center;"><%=att.FMLA != 0 ? "#{att.FMLA}hrs" : "None" %></td>
