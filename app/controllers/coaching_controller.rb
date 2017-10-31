@@ -17,11 +17,30 @@ class CoachingController < ApplicationController
 
   def edit
     @coach = Coach.find(params[:id])
+    @user = User.find(params[:user])
   end
 
   def update
+    # this is not done yet.
+    @coach = Coach.find(params[:id]) 
+    @user = User.find(params[:user])
+    if @coach.update(user_params)
+      flash[:success] = "Coaching Session Saved"
+      redirect_to "/coaching/show?id=#{@user.id}"
+    else
+      flash[:danger] = "Not saved, Unknown Error"
+    end
   end
 
+  def link
+    if current_user.role == 0
+      @users = User.all.order(:name)
+    else
+      @users = User.where(:team => current_user.team).order(:name)
+    end
+  end
+
+  #this still needs to be written
   def destroy
   end
 

@@ -1,0 +1,15 @@
+<% provide(:title, "ATO") %>
+<div style="text-align:center;">
+    <h3>Approved Time Off for <%=@user.name%></h3>
+</div>
+    <%if @ato == nil%>
+        <h4 style="text-align: center;">No Approved Time off</h4>
+    <%else%>
+        <%@ato.each do |ato|%>
+            <div class="login" style="width: 45%;">
+                <b>Date:</b> <%=ato.a_date.strftime("%a, %-d %b %Y ")%><br><br>
+                <b>Reason:</b> <%=ato.reason%><br><br>
+                <b>Hours:</b> <%=ato.hours%><br><br>
+            </div>
+        <%end%>
+    <%end%>

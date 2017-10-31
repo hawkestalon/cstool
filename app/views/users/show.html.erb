@@ -33,9 +33,7 @@
             <td class="title"><a href="../attendance/edit?id=<%=@user.id%>&flex=None" class="profileLink">Edit Row</a></td>
         <%end%>
     </tr>
-<%# </table> %>
 
-<%# <table> %>
     <tr>
         <td class="title"><b>Discipline</b></td>
     </tr>
@@ -50,18 +48,14 @@
         <td>Verbal Warnings: <%=@verbal%></td>
         <td> <a href="#" class="profileLink">View</a></td>
     </tr>
-<%# </table> %>
 
-<%# <table> %>
     <tr>
         <td class="title"><b>Coaching</b></td>
     </tr>
     <tr>
         <td><a href="/coaching/show?id=<%=@user.id%>" class="profileLink">View Coaching Sessions</a></td>
         <%if current_user.role == 2 || current_user.role == 0%>       
-        <td><a href="/coaching/new?id=<%=@user.id%>" class="profileLink">New Coaching Session</a></td>
+            <td><a href="/coaching/new?id=<%=@user.id%>" class="profileLink">New Coaching Session</a></td>
         <%end%>
-        <%# <td><a href="#" class="profileLink">Test Scores</a></td> %>
-        <%# <td><a href="#" class="profileLink">Quality Scores</a></td> %>
     </tr>
 </table>

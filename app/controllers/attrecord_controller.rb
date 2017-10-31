@@ -6,6 +6,7 @@ class AttrecordController < ApplicationController
         @user = User.find(params[:id])
         @att = @user.attrecords.first
     end
+    
     def update
         @user = User.find(params[:id])
         att = @user.attrecords.first
@@ -23,6 +24,25 @@ class AttrecordController < ApplicationController
             render 'edit'
         end
     end
+
+    def link
+        if current_user.role == 0
+          @users = User.all.order(:name)
+        else
+          @users = User.where(:team => current_user.team).order(:name)
+        end
+    end
+
+    def flexes
+        @user = User.find(params[:id])
+        @att = @user.attrecords.first
+    end
+
+    def pto
+        @user = User.find(params[:id])
+        @att = @user.attrecords.first
+    end
+
     private
         def att_params
             params.require(:attrecord).permit(:flexone, :flextwo, :flexthree, :PTO, :FMLA, :days)

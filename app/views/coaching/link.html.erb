@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    function corrective(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "coaching/new/?id= " + userId;
+    }
+</script>
+
+<% provide(:title, "Coaching") %>
+<h1 class="header">Coaching</h1>
+<div class="login headerLink">
+    <h3 class="header">New Coaching Session</h3>
+    <div class="header">
+        <span>Choose Agent</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=corrective()>Go</button>
+    </div>
+    <h3 class="header">View Coaching Sessions</h3>
+    <div class="header">
+        <table class="personList" style="margin: auto;">
+        <tr>
+            <td class="personList"><b>Name</b></td>
+            <td class="personList"><b>Sessions</b></td>
+            <td class="personList"><b>Most Recent Session</b></td>
+        </tr>
+        <%@users.each do |user|%>
+            <tr>
+                <td class="personList"><%=user.name%></td>
+                <%if Coach.where(:user_id => user.id).count != 0%>
+                    <td class="personList"><a href="/coaching/show/?id=<%= user.id %>" class="profileLink">View Sessions</a></td>
+                    <td class="personList"><%recent = Coach.where(:user_id => user.id).order(:created_at)%><%="#{recent[0].created_at.month}/#{recent[0].created_at.day}/#{recent[0].created_at.year}"%></td>
+                <%else%>
+                    <td class="personList">No Sessions</td>
+                <%end%>
+            </tr>
+        <%end%>
+        </table>
+    </div>
+</div>

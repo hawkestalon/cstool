@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    function corrective(){
+        var userId = document.getElementById('userId').value;
+        console.log(userId);
+        window.location = "corrective/new/?id= " + userId;
+    }
+</script>
+
+<% provide(:title, "Discipline") %>
+<h1 class="header">Discipline</h1>
+<div class="login headerLink">
+    <h3 class="header">New Corrective Action</h3>
+    <div class="header">
+        <span>Choose Agent</span>
+        <select style="margin: auto;" id="userId">
+        <%@users.each do |user|%>
+            <option value=" <%=user.id%>"><%=user.name%></option>
+        <%end%>
+        </select>
+        <button onclick=corrective()>Go</button>
+    </div>
+    <h3 class="header">View Corrective Actions</h3>
+    <div class="header">
+        <table class="personList" style="margin: auto;">
+        <%@users.each do |user|%>
+            <tr>
+                <td class="personList"><%=user.name%></td>
+                <%if user.corrective.count != 0%>
+                    <td class="personList"><a href="/corrective/show/?id=<%= user.id %>" class="profileLink">View Actions</a></td>
+                <%else%>
+                    <td class="personList">No Actions</td>
+                <%end%>
+            </tr>
+        <%end%>
+        </table>
+    </div>
+</div>
