@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 1bc5f33540dd82f69b704c7a3136419346fb7167
   get 'ato/new'
   post 'ato/create'
   get 'ato/edit'
