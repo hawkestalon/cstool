@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :show]
   before_action :correct_user, only: [:new, :create, :show, :myTeam]
+  #logged_in_user and correct_user functions can be found in the sessions_helper file
 
   #check to make sure user is logged in before rendering page
   #create a new user object
