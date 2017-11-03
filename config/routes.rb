@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'corrective/print'
 
   #attendance routes
-  get 'attendance/pto', to: 'attrecord#pto'
+  get 'attendance/pto', to: 'attrecord#flexes'
   get 'attendance/flexes', to: 'attrecord#flexes'
   get '/attendance', to: 'attrecord#link'
   get    'attendance/edit', to: 'attrecord#edit'
