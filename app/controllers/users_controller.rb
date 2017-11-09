@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'csv'
   before_action :logged_in_user, only: [:new, :create, :show]
   before_action :correct_user, only: [:new, :create, :show, :myTeam]
   #logged_in_user and correct_user functions can be found in the sessions_helper file
@@ -80,6 +81,62 @@ class UsersController < ApplicationController
     end
   end
 
+  def csvUser 
+    
+  end
+
+  def csv
+    @file = params[:csv][:upload]
+    @file_contents = @file.read
+    @content = CSV.parse(@file_contents)
+    headers = ["name", "email", "employee number", "role", "team", "password", "cert-level"]
+    if @content[0].size < 5
+      flash[:danger] = "Not enough columns in the CSV file!!!"
+      redirect_to "/user/csv"
+    end
+    @args = []
+    @content[0].each_with_index do |header, index|
+      header.downcase!.lstrip!
+      headers.each_with_index do |h, i|
+        if header == h
+          @args.push([h, index])
+          headers.delete_at(i)
+        end
+      end
+    end
+    @missing_headers = headers
+    if @missing_headers.size > 3
+      flash[:danger] = "Warning! Column Headers are not recognized!"
+      redirect_to "/user/csv"
+    end
+    @args = @args.join(', ')
+    @content.delete_at(0)
+  end
+
+  def csvFinal
+    #create entries into user database from @content
+    @content = CSV.parse(params[:content])
+    @content.delete_at(0)
+    @args = params[:args].split(',')
+    @errors = []
+    @success = []
+    @content.each_with_index do |entry, hash_index|
+      params = Hash.new
+      @args.each_with_index do |arg, index|
+        if index % 2 == 0 and index + 1 <= @args.size
+          arg = "employee" if arg.lstrip == "employee number"
+          params[arg.lstrip] = entry[@args[index + 1].to_i]
+        end
+      end
+      params["password_confirmation"] = params["password"]
+      user = User.new(params)
+      if user.save
+        @success.push(params["name"])
+      else
+        @errors.push(params["name"])
+      end
+    end
+  end
   #restrict parameters that can be accepted into the active record
   #any parameter labeled different than those below will not be saved
   private

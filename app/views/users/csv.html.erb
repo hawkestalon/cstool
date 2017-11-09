@@ -1,0 +1,17 @@
+<% provide(:title, "Add Users") %>
+      <h1 style="text-align: center;">Upload Users via CSV</h1>
+<div class="login">
+    <% if @missing_headers.size != 0%>
+        <b>Missing Column Headers:</b><br>
+        <%@missing_headers.each do |x|%>
+            <span>- <%= x.capitalize!%> will not be set.</span><br>
+        <%end%>
+    <%end%>
+
+    <br><br>
+    <%= form_tag('/user/csv-final', method: 'post') do%>
+        <%= submit_tag("Finalize Changes")%>
+        <%= hidden_field_tag :content,  @file_contents %>
+        <%= hidden_field_tag :args, @args%>
+    <% end%>
+</div>

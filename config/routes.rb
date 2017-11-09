@@ -44,6 +44,10 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   #users routes
+  get 'user/csv-final', to: 'users#csvFinal'
+  post 'user/csv-final', to: 'users#csvFinal'
+  post 'user/csv-process', to: 'users#csv'
+  get 'user/csv', to: 'users#csvUser'
   get 'users/new'
   get 'users/show'
   get 'users/edit'

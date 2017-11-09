@@ -1,0 +1,14 @@
+<% provide(:title, "Add Users") %>
+      <h1 style="text-align: center;">Upload Users via CSV</h1>
+<div class="login" style="width: 45%">
+    <div style="margin: auto; width: 65%; display: block;">
+        <p style="text-align: center">The following headers must be present in the csv file:</p><p> "Name", "email", "employee number", "role, "team", "password"</p>
+        <div style="margin: auto; width: 50%;">
+            <%=form_tag('/user/csv-process', method: 'post', multipart: true) do %>
+                <%= file_field(:csv, :upload, accept: "text/csv")%><br><br>
+                <%= submit_tag("Process File")%>
+            <% end %>
+        </div>
+    </div>
+ 
+</div>

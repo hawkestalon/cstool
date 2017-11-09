@@ -1,0 +1,15 @@
+<% provide(:title, "Users Added") %>
+      <h1 style="text-align: center;">Users Added!</h1>
+
+<% if @success.size != 0%>
+    <span>Created <%=@success.size%> Users</span><br>
+    <% @success.each do |user| %>
+        <%= "#{user} created"%><br>
+    <%end%>
+<%end%>
+<%if @errors.size != 0 %>
+    <span><%=@errors.size%> users were not created </span><br>
+    <% @errors.each do |user| %>
+        <%= "Creation of #{user} failed"%><br>
+    <% end%>
+<%end%>
