@@ -36,4 +36,4 @@ Deployment:
     4. Restart the app to effect the changes ("passenger-config restart-app", if using passenger), do not need to restart the webserver.
 
     NOTE: In order to deploy to Heroku, the database would have to be changed to Postgresql. The rest of the app is not configured to run this way. Substantial changes 
-        would have to be made. I do not reccommend this, nor is this app meant to be deployed to Heroku.
+        would have to be made. I do not reccommend this, nor is this app intended to be deployed to Heroku.

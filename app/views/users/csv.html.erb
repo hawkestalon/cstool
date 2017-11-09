@@ -4,13 +4,16 @@
     <% if @missing_headers.size != 0%>
         <b>Missing Column Headers:</b><br>
         <%@missing_headers.each do |x|%>
-            <span>- <%= x.capitalize!%> will not be set.</span><br>
+            <span>- <%= x.capitalize!%> will be set to a default value.</span><br>
         <%end%>
+    <%else%>
+        <b>All column headers are present</b>
     <%end%>
-
+    <br><br>
+        <b><%=@content.size%> user(s) are set to be created</b>
     <br><br>
     <%= form_tag('/user/csv-final', method: 'post') do%>
-        <%= submit_tag("Finalize Changes")%>
+        <%= submit_tag("Accept and Upload Users")%>
         <%= hidden_field_tag :content,  @file_contents %>
         <%= hidden_field_tag :args, @args%>
     <% end%>

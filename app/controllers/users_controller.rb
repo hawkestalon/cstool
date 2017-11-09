@@ -89,11 +89,11 @@ class UsersController < ApplicationController
     @file = params[:csv][:upload]
     @file_contents = @file.read
     @content = CSV.parse(@file_contents)
-    headers = ["name", "email", "employee number", "role", "team", "password", "cert-level"]
-    if @content[0].size < 5
-      flash[:danger] = "Not enough columns in the CSV file!!!"
-      redirect_to "/user/csv"
-    end
+    headers = ["name", "email", "employee number", "role", "team", "password"]
+    # if @content[0].size < 5
+    #   flash[:danger] = "Not enough columns in the CSV file!!!"
+    #   redirect_to "/user/csv"
+    # end
     @args = []
     @content[0].each_with_index do |header, index|
       header.downcase!.lstrip!
@@ -105,8 +105,15 @@ class UsersController < ApplicationController
       end
     end
     @missing_headers = headers
-    if @missing_headers.size > 3
-      flash[:danger] = "Warning! Column Headers are not recognized!"
+    redirect = false
+    @missing_headers.each do |x|
+      if x == "name" or x == 'email' or x == "password"
+        flash[:danger] == nil ? flash[:danger] = x.capitalize : flash[:danger] += ", #{x.capitalize}"
+        redirect = true
+      end
+    end
+    if redirect
+      flash[:danger] += " column headers are missing."
       redirect_to "/user/csv"
     end
     @args = @args.join(', ')
@@ -114,7 +121,6 @@ class UsersController < ApplicationController
   end
 
   def csvFinal
-    #create entries into user database from @content
     @content = CSV.parse(params[:content])
     @content.delete_at(0)
     @args = params[:args].split(',')
