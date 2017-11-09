@@ -89,11 +89,7 @@ class UsersController < ApplicationController
     @file = params[:csv][:upload]
     @file_contents = @file.read
     @content = CSV.parse(@file_contents)
-    headers = ["name", "email", "employee number", "role", "team", "password"]
-    # if @content[0].size < 5
-    #   flash[:danger] = "Not enough columns in the CSV file!!!"
-    #   redirect_to "/user/csv"
-    # end
+    headers = ["name", "email", "employee number", "role", "team", "password", "cert level"]
     @args = []
     @content[0].each_with_index do |header, index|
       header.downcase!.lstrip!
@@ -121,17 +117,20 @@ class UsersController < ApplicationController
   end
 
   def csvFinal
-    @content = CSV.parse(params[:content])
-    @content.delete_at(0)
-    @args = params[:args].split(',')
+    content = CSV.parse(params[:content])
+    content.delete_at(0)
+    args = params[:args].split(',')
     @errors = []
+    @errors_why = []
     @success = []
-    @content.each_with_index do |entry, hash_index|
+    content.each_with_index do |entry, hash_index|
       params = Hash.new
-      @args.each_with_index do |arg, index|
-        if index % 2 == 0 and index + 1 <= @args.size
+      args.each_with_index do |arg, index|
+        if index % 2 == 0 and index + 1 <= args.size
           arg = "employee" if arg.lstrip == "employee number"
-          params[arg.lstrip] = entry[@args[index + 1].to_i]
+          arg = "certLevel" if arg.lstrip == "cert level" or arg.lstrip == "certification level"
+          params[arg.lstrip] = entry[args[index + 1].to_i]
+          @errors_why.push("#{arg.lstrip.capitalize} field empty") if entry[args[index + 1].to_i] == nil and arg.lstrip == "password"
         end
       end
       params["password_confirmation"] = params["password"]

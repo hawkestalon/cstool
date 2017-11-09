@@ -7,10 +7,16 @@
         <%= "#{user} created"%><br>
     <%end%>
 <%end%>
+<br><br>
 <%if @errors.size != 0 %>
-    <b><%=@errors.size%> users were not created </b><br>
+    <b><%=@errors.size%> user(s) not created </b><br>
     <% @errors.each do |user| %>
         <%= "Creation of #{user} failed"%><br>
     <% end%>
+    <br><br><b>The following errors were encountered:</b>
+    <%@errors_why.each do |error|%>
+        <%= error%><br>
+    <%end%>
+
 <%end%>
 </div>
