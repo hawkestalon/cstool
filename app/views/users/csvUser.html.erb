@@ -5,7 +5,7 @@
         <p style="text-align: center">The following headers should be present in the csv file:</p><p style="text-align: center"> "Name", "email", "employee number", "role, "team", "password", "cert level"</p>
         <div style="margin: auto; width: 50%;">
             <%=form_tag('/user/csv-process', method: 'post', multipart: true) do %>
-                <%= file_field(:csv, :upload, accept: "text/csv")%><br><br>
+                <%= file_field(:csv, :upload, accept: "text/csv", required: 'required')%><br><br>
                 <%= submit_tag("Process File")%>
             <% end %>
         </div>
