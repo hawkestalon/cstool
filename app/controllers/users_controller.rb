@@ -130,7 +130,7 @@ class UsersController < ApplicationController
           arg = "employee" if arg.lstrip == "employee number"
           arg = "certLevel" if arg.lstrip == "cert level" or arg.lstrip == "certification level"
           params[arg.lstrip] = entry[args[index + 1].to_i]
-          @errors_why.push("#{arg.lstrip.capitalize} field empty") if entry[args[index + 1].to_i] == nil and arg.lstrip == "password"
+          @errors_why.push("#{arg.lstrip.capitalize} field empty") if entry[args[index + 1].to_i] == nil and (arg.lstrip == "password" or arg.lstrip == "name" or arg.lstrip == "email")
         end
       end
       params["password_confirmation"] = params["password"]
@@ -142,6 +142,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
   #restrict parameters that can be accepted into the active record
   #any parameter labeled different than those below will not be saved
   private
