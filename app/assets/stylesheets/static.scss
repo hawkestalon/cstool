@@ -183,3 +183,23 @@ table {
 .noPadding {
     padding: none;
 }
+.file {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px 8px 0px 0px;
+    text-align: center;
+    border-color: #afa9a9;
+}
+.profNav {
+    text-align: center;
+}
+.profNav:hover{
+    cursor: pointer;
+}
+.attendanceTable {
+    border: none;
+    box-shadow: none;
+}
+.attTd {
+    border: none;
+}

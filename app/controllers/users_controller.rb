@@ -36,6 +36,10 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
       @verbal = @user.corrective.where(:typeOf=>"Verbal Warning").count
+      @att = @user.attrecords.first
+      @coachCount = Coach.where(:user_id => @user.id).count
+      @coach = Coach.where(:user_id => @user.id).order(:created_at).first
+      @corrective = @user.corrective.order(:created_at).first
   end
 
   #if current user is just a lead, display only users on their team

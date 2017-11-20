@@ -1,61 +1,129 @@
 <% provide(:title, "Profile") %>
+
+<script type="text/javascript">
+function attendance(){
+    document.getElementById('attendanceInfo').style.display = "block";
+    document.getElementById('discInfo').style.display = "none";
+    document.getElementById('coachInfo').style.display = "none";
+}
+function discipline(){
+    document.getElementById('attendanceInfo').style.display = "none";
+    document.getElementById('discInfo').style.display = "block";
+    document.getElementById('coachInfo').style.display = "none";
+}
+function coaching(){
+    document.getElementById('attendanceInfo').style.display = "none";
+    document.getElementById('discInfo').style.display = "none";
+    document.getElementById('coachInfo').style.display = "block";
+}
+</script>
 <div style="text-align:center;">
 <h2><%= @user.name%></h2>
 <h4>Certification Level <%= @user.certLevel%></h4> 
 </div>
 <% att = @user.attrecords.first%>
-<table>
-    <tr>
-        <td class="title"><b>Attendance</b></td>
-    </tr>
-    <tr>
-        <td>15min Flex: <%=att.flexone != nil ? att.flexone : "None" %>
-        <%if current_user.role == 0 || current_user.role == 2%>
-         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=one" class="profileLink">Edit</a>
-        <%end%>
-        </td>
-        <td>15min Flex: <%=att.flextwo != nil ? att.flextwo : "None" %>
-        <%if current_user.role == 0 || current_user.role == 2%>
-         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=two" class="profileLink">Edit</a>
-        <%end%>
-        </td>
-        <td>30min Flex: <%=att.flexthree != nil ? att.flexthree : "None" %> 
-        <%if current_user.role == 0 || current_user.role == 2%>
-         -- <a href="../attendance/edit?id=<%=@user.id%>&flex=three" class="profileLink">Edit</a>
-        <%end%>
-        </td>
-    </tr>
-    <tr>
-        <td>3 Days: <%=att.days%> </td>
-        <td>PTO: <%=att.PTO%>hrs </td>
-        <td>FMLA: <%=att.FMLA%>hrs </td>
-        <%if current_user.role == 0 || current_user.role == 2%>
-            <td class="title"><a href="../attendance/edit?id=<%=@user.id%>&flex=None" class="profileLink">Edit Row</a></td>
-        <%end%>
-    </tr>
-
-    <tr>
-        <td class="title"><b>Discipline</b></td>
-    </tr>
-    <tr>
-        <td>Corrective Actions: <%=@user.corrective.count%> </td>
-        <td><a href="/corrective/show?id=<%=@user.id%>" class="profileLink">View</a>
-        <%if current_user.role == 0 || current_user.role == 2%>
-            <a href="/corrective/new?id=<%=@user.id%>" class="profileLink">Add</a></td>
-        <%end%>
-    </tr>
-    <tr>
-        <td>Verbal Warnings: <%=@verbal%></td>
-        <td> <a href="#" class="profileLink">View</a></td>
-    </tr>
-
-    <tr>
-        <td class="title"><b>Coaching</b></td>
-    </tr>
-    <tr>
-        <td><a href="/coaching/show?id=<%=@user.id%>" class="profileLink">View Coaching Sessions</a></td>
-        <%if current_user.role == 2 || current_user.role == 0%>       
-            <td><a href="/coaching/new?id=<%=@user.id%>" class="profileLink">New Coaching Session</a></td>
-        <%end%>
-    </tr>
-</table>
+<div class="corrective" style="margin: auto; width: 85%;">
+    <ul style="margin-bottom: 0; padding-left: 0;">
+        <li id="attendance" class="profNav" onclick="attendance()">Attendance</li>
+        <li id="discipline" class="profNav" onclick="discipline()">Discipline</li>
+        <li id="coaching" class="profNav" onclick="coaching()">Coaching</li>
+    </ul>
+    <div class="corrective login" style="margin-left: none; width: 100%;">
+        <div id="attendanceInfo">
+            <table class="attendanceTable">
+                <tr>
+                    <td class="attTd">
+                        15 Min Flex: <%= @att.flexone != nil ? @att.flexone : "None"%><a href="/attendance/edit?id=<%=@user.id%>&flex=one"><%= image_tag("editResized.png", width: "15px")%></a>
+                    </td>
+                    <td class="attTd">
+                        15 Min Flex: <%= @att.flextwo != nil ? @att.flextwo : "None"%>
+                    </td>
+                    <td class="attTd">
+                        30 Min Flex: <%= @att.flexthree != nil ? @att.flexthree : "None"%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="attTd">
+                        PTO: <%= @att.PTO%>hrs
+                    </td>
+                    <td  class="attTd">
+                        FMLA: <%= @att.FMLA%>hrs
+                    </td>
+                    <td  class="attTd">
+                        3Days: <%= @att.days%>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="discInfo" style="display: none;">
+            <table class="attendanceTable">
+                <tr>
+                    <td class="attTd">
+                        Corrective Actions: <%= @user.corrective.count%>
+                    </td>
+                    <td class="attTd">
+                        <a href="/corrective/show/?id=<%= @user.id%>" class="profileLink">View All</a>
+                    </td>
+                    <%if current_user.role != 1%>
+                        <td class="attTd">
+                            <a href="/corrective/new/?id=<%= @user.id%>" class="profileLink">Add</a>
+                        </td>
+                    <%end%>
+                </tr>
+            </table>
+            <table class="attendanceTable">
+                <tr>
+                    <td class="attTd">
+                        <%if @user.corrective.count != 0 and @corrective != nil%>
+                            Date: <%=@corrective.created_at.to_formatted_s(:long)%>
+                        <%end%>
+                    </td>
+                    <td class="attTd">
+                        <%= @user.corrective.count != 0 ? "Most Recent Corrective Action" : "No Corrective Actions Yet"%>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <% if @corrective != nil%>
+                    <b>Description:</b><br>
+                    <%= @corrective.description%>
+                <%end%>
+            </div>
+        </div>
+        <div id="coachInfo" style="display: none;">
+            <table class="attendanceTable">
+                <tr>
+                    <td class="attTd">
+                        Coaching Sessions: <%=@coachCount%>
+                    </td>
+                    <td class="attTd">
+                        <a href="/coaching/show/?id=<%= @user.id%>" class="profileLink">View All</a>
+                    </td>
+                    <%if current_user.role != 1%>
+                        <td class="attTd">
+                            <a href="/coaching/new/?id=<%= @user.id%>" class="profileLink">New Session</a>
+                        </td>
+                    <%end%>
+                </tr>
+            </table>
+            <table class="attendanceTable">
+                <tr>
+                    <td class="attTd">
+                        <%if @coachCount != 0 and @coach != nil%>
+                            Date: <%=@coach.created_at.to_formatted_s(:long)%>
+                        <%end%>
+                    </td>
+                    <td class="attTd">
+                        <%= @coachCount != 0 ? "Most Recent Coaching Session" : "No Coaching Sessions Yet"%>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <%if @coach != nil%>
+                    <b>Details</b><br>
+                    <%=@coach.details%>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>
