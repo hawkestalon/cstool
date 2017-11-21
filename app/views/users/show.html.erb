@@ -36,10 +36,10 @@ function coaching(){
                         15 Min Flex: <%= @att.flexone != nil ? @att.flexone : "None"%><a href="/attendance/edit?id=<%=@user.id%>&flex=one"><%= image_tag("editResized.png", width: "15px")%></a>
                     </td>
                     <td class="attTd">
-                        15 Min Flex: <%= @att.flextwo != nil ? @att.flextwo : "None"%>
+                        15 Min Flex: <%= @att.flextwo != nil ? @att.flextwo : "None"%><a href="/attendance/edit?id=<%=@user.id%>&flex=two"><%= image_tag("editResized.png", width: "15px")%></a>
                     </td>
                     <td class="attTd">
-                        30 Min Flex: <%= @att.flexthree != nil ? @att.flexthree : "None"%>
+                        30 Min Flex: <%= @att.flexthree != nil ? @att.flexthree : "None"%><a href="/attendance/edit?id=<%=@user.id%>&flex=three"><%= image_tag("editResized.png", width: "15px")%></a>
                     </td>
                 </tr>
                 <tr>
@@ -51,6 +51,9 @@ function coaching(){
                     </td>
                     <td  class="attTd">
                         3Days: <%= @att.days%>
+                    </td>
+                    <td  class="attTd">
+                        <a href="/attendance/edit?id=<%=@user.id%>"><%= image_tag("editResized.png", width: "15px")%></a>
                     </td>
                 </tr>
             </table>
