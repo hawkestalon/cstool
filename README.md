@@ -33,7 +33,8 @@ Deployment:
     1. Make sure the most updated code is where it needs to be on the server and ensure you are in the correct directory before performing commands. 
     2. Install dependencies with the "bundle install" command.
     3. Perform Database migration and precompile assets with the "bundle exec rake assets:precompile db:migrate RAILS_ENV=production" command.
-    4. Restart the app to effect the changes ("passenger-config restart-app", if using passenger), do not need to restart the webserver.
+    4. Restart the app to effect the changes ("passenger-config restart-app", if using passenger).
+    5. Restart the nginx service with service nginx restart, if necessary.
 
     NOTE: In order to deploy to Heroku, the database would have to be changed to Postgresql. The rest of the app is not configured to run this way. Substantial changes 
         would have to be made. I do not reccommend this, nor is this app intended to be deployed to Heroku.

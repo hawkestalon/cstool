@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   get 'users/edit'
   get 'myTeam', to: 'users#myTeam'
   get 'teamchart', to: 'users#teamChart'
+  get 'users/password'
+  post 'users/confirm'
 
   root to: 'static#home'
   resources :users

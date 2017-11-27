@@ -147,6 +147,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def password
+    @user = User.find(params[:id])
+  end
+  def confirm
+    @user = User.find(params[:id])
+    if @user.authenticate(params[:user][:old_password]) and user_params[:password] == user_params[:password_confirmation]
+      if @user.update(user_params)
+        flash[:success] = "Password Changed Successfully!"
+        redirect_to @user
+      else 
+        flash[:danger] = "Errors!"
+      end
+    elsif user_params[:password] == user_params[:password_confirmation]
+      flash[:danger] = "Password and Password Confirmation don't match!"
+      redirect_to "/users/password/?id=#{@user.id}"
+    else
+      flash[:danger] = "Password Incorrect"
+      redirect_to "/users/password/?id=#{@user.id}"
+    end
+  end
+
   #restrict parameters that can be accepted into the active record
   #any parameter labeled different than those below will not be saved
   private

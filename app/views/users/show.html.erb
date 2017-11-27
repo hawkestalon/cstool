@@ -27,6 +27,9 @@ function coaching(){
         <li id="attendance" class="profNav" onclick="attendance()">Attendance</li>
         <li id="discipline" class="profNav" onclick="discipline()">Discipline</li>
         <li id="coaching" class="profNav" onclick="coaching()">Coaching</li>
+        <%if current_user.id == @user.id%>
+            <li><a href="/users/password?id=<%=@user.id%>" class="profileLink">Change Password</a></li>
+        <%end%>
     </ul>
     <div class="corrective login" style="margin-left: none; width: 100%;">
         <div id="attendanceInfo">
