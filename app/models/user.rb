@@ -16,5 +16,6 @@ class User < ApplicationRecord
         self.employee ||= 000000
         self.role ||= 1
         self.team ||= 0 
+        #todo Initate a new attrecord for user? 
     end
 end
