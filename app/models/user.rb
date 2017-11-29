@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :attrecords, dependent: :destroy
     has_many :corrective, dependent: :destroy
     has_many :ato, dependent: :destroy
+    has_many :miss, dependent: :destroy
 
     after_initialize :init
 
