@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  #miseed hours routes
+  get 'miss/new'
+  post 'miss/create'
+  get 'miss/edit'
+  post 'miss/update'
+  delete 'miss/destroy'
+
+  #ato routes
   get 'ato/new'
   post 'ato/create'
   get 'ato/edit'
@@ -6,6 +14,7 @@ Rails.application.routes.draw do
   get 'ato/show'
   delete 'ato/destroy'
 
+  #coaching routes
   get '/coaching', to: 'coaching#link'
   get 'coaching/new'
   post "coaching/create"

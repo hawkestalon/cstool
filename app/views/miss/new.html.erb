@@ -1,17 +1,17 @@
-<% provide(:title, "Add Approved Time Off") %>
+<% provide(:title, "Missed Hours") %>
       <h1 style="text-align: center;">Approved Time Off for <%=@user.name%></h1>
 <div class="login">
-      <%= form_for(@user.ato.new, url: "/ato/create?id=#{@user.id}") do |f| %>
+      <%= form_for(@user.miss.new, url: "/miss/create?id=#{@user.id}") do |f| %>
             <%= f.label(:a_date, "Date of Time Off") %><br>
             <%= f.date_select(:a_date, :order => [:month, :day, :year]) %>
             <br>
             <%= f.label "Reason"%><br>
-            <%= f.text_area :reason, placeholder: "Reason for time off...", class: "textarea" %>
+            <%= f.text_area :reason, placeholder: "Reason for missing hours...", class: "textarea" %>
             <br>
             <%= f.label "Hours"%><br>
             <%= f.number_field :hours%>
             <br>
-            <%= f.submit "Save ATO", class: "loginField" %>
+            <%= f.submit "Save Missed Hours", class: "loginField" %>
 </div>
 <%current_user.name%>
 <% end %>

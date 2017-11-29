@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170913215722) do
-=======
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170906234441) do
-=======
-ActiveRecord::Schema.define(version: 20170913215722) do
->>>>>>> c30a2f31bcfc4c4094d853756eebc2341a038ff2
->>>>>>> 1bc5f33540dd82f69b704c7a3136419346fb7167
+ActiveRecord::Schema.define(version: 20171129212019) do
 
   create_table "announcements", force: :cascade do |t|
     t.string "body"
@@ -74,6 +66,16 @@ ActiveRecord::Schema.define(version: 20170913215722) do
     t.string "action"
     t.string "comments"
     t.index ["user_id"], name: "index_correctives_on_user_id"
+  end
+
+  create_table "misses", force: :cascade do |t|
+    t.string "reason"
+    t.datetime "a_date"
+    t.integer "hours"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_misses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
