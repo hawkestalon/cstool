@@ -86,7 +86,7 @@ Modifying the database from the server command line:
 
         NOTE: The first time you upload the app to a new server, you will have to create the first Admin user via the server command line. Once that first user is created, everything else can normally be done from the website unless a malfunction occurs or you are doing something not intended to be done for the website.
 
-        NOTE 2: attrecord database records are created automatically by the website when a user is first created. If you are creating a user via the server command line, you will also have to initiate a new attrecord for the user as well. Plans are currently in place to have this happen as part of User creation validation but has not been implemented as of (11/27/17). This implementation will reside in the "init" function in the file /app/models/user.rb.
+        NOTE 2: attrecord database records are created automatically by the website when a user is first created. If you are creating a user via the server command line, you will also have to initiate a new attrecord for the user as well. Plans are currently in place to have this happen as part of User creation validation but has not been implemented as of 11/27/17. This implementation will reside in the file /app/models/user.rb.
 
     Updating and deleting Records
         In order to update or delete a record you will first need to find that record. This can be done the same way finding a user is described in the previous section. You can also find a record by getting all of the records and then searching for the id number of the record you would like to edit or delete. This can be done by the command:
@@ -111,8 +111,12 @@ Modifying the database from the server command line:
         Once you have a record selected you can then update or delete the object. This is simply done by:
 
             #update record
-            corrective.update_attributes(<attributes to be updated>)
+            corrective.update(<attributes to be updated>)
                 or
             #delete record
             corrective.delete
         Errors that occur in this process will be caused by the same reasons as database creation and can be resolved by the same processes. 
+
+        Special NOTE: Updating the password and password_confirmation attribute for a User will enable you to change their password without knowing the previous password.
+
+        Special NOTE2: If you need to update an attribute of a database record but you want to ignore the model validation, use the update_attribute command instead. However,                  this is NOT reccommended. Only do this if you absolutely have to.

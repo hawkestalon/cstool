@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   #else render the edit page again. (Possible bug here?)
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       flash[:sucess] = "Successfully Updated!"
       redirect_to @user
     else
@@ -152,6 +152,11 @@ class UsersController < ApplicationController
   end
   def confirm
     @user = User.find(params[:id])
+    if @user.id != current_user.id
+      flash[:danger] = "Hey now, you're not allowed to change this password."
+      redirect_to @user
+      return
+    end
     if @user.authenticate(params[:user][:old_password]) and user_params[:password] == user_params[:password_confirmation]
       if @user.update(user_params)
         flash[:success] = "Password Changed Successfully!"
