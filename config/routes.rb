@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'miss/create'
   get 'miss/edit'
   post 'miss/update'
+  get 'miss/show'
   delete 'miss/destroy'
 
   #ato routes

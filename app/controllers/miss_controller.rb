@@ -21,6 +21,22 @@ class MissController < ApplicationController
 
   def update
     @miss = Miss.find(params[:id])
+    if @miss.update(user_params)
+      flash[:success] = "Successfully Updated!"
+      redirect_to '/attendance'
+    else
+      flash[:danger] = "Danger! Wasn't successfully updated!"
+      redirect_to '/attendance'
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    if Miss.exists?(:user_id => @user.id)
+      @miss = Miss.where(:user_id => @user.id)
+    else 
+      @miss = nil
+    end
   end
 
   def destroy

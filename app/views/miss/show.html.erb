@@ -1,0 +1,15 @@
+<% provide(:title, "Missed Hours") %>
+<div style="text-align:center;">
+    <h3>Approved Time Off for <%=@user.name%></h3>
+</div>
+    <%if @miss == nil%>
+        <h4 style="text-align: center;">No Missed Hours Logged</h4>
+    <%else%>
+        <%@miss.each do |miss|%>
+            <div class="login" style="width: 45%; margin-bottom: 10px;">
+                <b>Date:</b> <%=miss.a_date.strftime("%a, %-d %b %Y ")%><br><br>
+                <b>Reason:</b> <%=miss.reason%><br><br>
+                <b>Hours:</b> <%=miss.hours%><br><br>
+            </div>
+        <%end%>
+    <%end%>

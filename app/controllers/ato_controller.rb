@@ -22,7 +22,7 @@ class AtoController < ApplicationController
 
   def update
     @ato = Ato.find(params[:id])
-    if @ato.update_attributes(user_params)
+    if @ato.update(user_params)
       flash[:success] = "Approved Time Off Update Complete"
       redirect_to root_path
     else 

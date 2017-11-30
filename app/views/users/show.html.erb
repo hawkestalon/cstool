@@ -92,7 +92,13 @@ function coaching(){
             <div>
                 <% if @corrective != nil%>
                     <b>Description:</b><br>
-                    <%= @corrective.description%>
+                    <%= @corrective.description%><br>
+                    <br><b>Plan for Correction:</b><br>
+                    <%= @corrective.plan%><br>
+                    <br><b>Action if Not Corrected:</b><br>
+                    <%= @corrective.action%><br>
+                    <br><b>Employee Comments:</b><br>
+                    <%= @corrective.comments%>
                 <%end%>
             </div>
         </div>
@@ -126,8 +132,10 @@ function coaching(){
             </table>
             <div>
                 <%if @coach != nil%>
-                    <b>Details</b><br>
+                    <b>Session Details</b><br>
                     <%=@coach.details%>
+                    <br><br><b>Goals</b><br>
+                    <%= @coach.goals%>
                 <%end%>
             </div>
         </div>

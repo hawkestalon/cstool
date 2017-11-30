@@ -1,2 +1,17 @@
-<h1>Miss#edit</h1>
-<p>Find me in app/views/miss/edit.html.erb</p>
+<% provide(:title, "Edit Missed Hours") %>
+      <h1 style="text-align: center;">Edit Missed Hours</h1>
+<div class="login">
+      <%= form_for(@miss, url: "/miss/update?id=#{@ato.id}") do |f| %>
+            <%= f.label(:a_date, "Date of Time Off") %><br>
+            <%= f.date_select(:a_date, :order => [:month, :day, :year]) %>
+            <br>
+            <%= f.label "Reason"%><br>
+            <%= f.text_area :reason, placeholder: "Reason for missing hours...", class: "textarea" %>
+            <br>
+            <%= f.label "Hours"%><br>
+            <%= f.number_field :hours%>
+            <br>
+            <%= f.submit "Save Missed Hours", class: "loginField" %>
+</div>
+<%current_user.name%>
+<% end %>

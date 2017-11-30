@@ -1,5 +1,5 @@
 <% provide(:title, "Missed Hours") %>
-      <h1 style="text-align: center;">Approved Time Off for <%=@user.name%></h1>
+      <h1 style="text-align: center;">Missed Hours for <%=@user.name%></h1>
 <div class="login">
       <%= form_for(@user.miss.new, url: "/miss/create?id=#{@user.id}") do |f| %>
             <%= f.label(:a_date, "Date of Time Off") %><br>

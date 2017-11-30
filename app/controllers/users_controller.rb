@@ -40,6 +40,7 @@ class UsersController < ApplicationController
       @coachCount = Coach.where(:user_id => @user.id).count
       @coach = Coach.where(:user_id => @user.id).order(:created_at).first
       @corrective = @user.corrective.order(:created_at).first
+      @ato = @user.ato.order(:created_at).last
   end
 
   #if current user is just a lead, display only users on their team

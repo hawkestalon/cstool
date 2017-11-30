@@ -18,7 +18,7 @@
         var userId = document.getElementById('missed').value;
         console.log(userId);
         if(false){
-            window.location = "corrective/new/?id= " + userId;
+            window.location = "miss/new/?id= " + userId;
         }
     }
 </script>
@@ -58,13 +58,13 @@
     </div>
      <h3 class="header">Missed Hours</h3>
     <div class="header">
-        <span>Manage Missed Hours for:</span>
+        <span>Log Missed Hours for:</span>
         <select style="margin: auto;" id="missed">
         <%@users.each do |user|%>
             <option value=" <%=user.id%>"><%=user.name%></option>
         <%end%>
         </select>
-        <button onclick=missedHours() disabled>Go</button>
+        <button onclick=missedHours()>Go</button>
     </div>
     <h3 class="header">Team Overview</h3>
     <div class="header">
@@ -87,6 +87,7 @@
                 <%flexes -= 1 unless att.flextwo == nil%>
                 <%flexes -= 1 unless att.flexthree == nil%>
                 <%Ato.exists?(:user_id => user.id) ? ato = true : ato = false %>
+                <%Miss.exists?(:user_id => user.id) ? miss = true : miss = false %>
                 <td class="personList" style="text-align: center;"><%= flexes %></td>
                 <td class="personList" style="text-align: center;"><%=att.PTO != 0 ? "#{att.PTO}hrs" : "None" %></td>
                 <td class="personList" style="text-align: center;"><%=att.FMLA != 0 ? "#{att.FMLA}hrs" : "None" %></td>
@@ -96,8 +97,7 @@
                     <td class="personList" style="text-align: center;">None</td>
                 <%end%>
                 <td class="personList" style="text-align: center;"><%=ato ? link_to("View Time Off", "/ato/show/?id=#{user.id}", class: "profileLink") : "None" %></td>
-                <%# Missed hours does not yet exist %>
-                <td class="personList" style="text-align: center;">None</td>
+                <td class="personList" style="text-align: center;"><%=miss ? link_to("View Missed Hours", "/miss/show/?id=#{user.id}", class: "profileLink") : "None" %></td>
             </tr>
         <%end%>
         </table>
