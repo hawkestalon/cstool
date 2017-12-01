@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     # array of users by team
     @users = []
     @team.each do |key, value|
-      temp = User.where(:team => key)
+      temp = User.where(:team => key).order(role: :desc)
       @users.push(temp)
     end
   end
