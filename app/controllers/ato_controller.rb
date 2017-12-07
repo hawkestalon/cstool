@@ -14,6 +14,7 @@ class AtoController < ApplicationController
       flash[:danger] = "Oh no! Something went wrong!"
       render 'new'
     end
+    atoToMiss(@user)
   end
 
   def edit
@@ -38,6 +39,7 @@ class AtoController < ApplicationController
     else 
       @ato = nil
     end
+    atoToMiss(@user)
   end
 
   def destroy

@@ -32,6 +32,7 @@ class MissController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    atoToMiss(@user)
     if Miss.exists?(:user_id => @user.id)
       @miss = Miss.where(:user_id => @user.id)
     else 
