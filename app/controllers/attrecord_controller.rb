@@ -48,6 +48,7 @@ Optimizations have not been made.
     def flexes
         @user = User.find(params[:id])
         @att = @user.attrecords.first
+        reset_flexes(@user)
     end
 
     def pto

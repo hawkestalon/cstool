@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       @coach = Coach.where(:user_id => @user.id).order(:created_at).first
       @corrective = @user.corrective.order(:created_at).first
       @ato = @user.ato.order(:created_at).last
+      reset_flexes(@user)
   end
 
   #if current user is just a lead, display only users on their team
