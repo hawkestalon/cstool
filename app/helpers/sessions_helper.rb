@@ -20,4 +20,10 @@ module SessionsHelper
         redirect_to login_url
       end
     end    
+    def admin_test
+      if current_user.role != 0
+        flash[:danger] = "Not Authorized"
+        redirect_to "/"
+      end
+    end
 end

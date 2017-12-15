@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   require 'csv'
-  before_action :logged_in_user, only: [:new, :create, :show]
-  before_action :correct_user, only: [:new, :create, :show, :myTeam]
-  #logged_in_user and correct_user functions can be found in the sessions_helper file
+  before_action :logged_in_user
+  before_action :correct_user, only: [ :show, :myTeam]
+  before_action :admin_test, only: [:new, :create, :edit, :update, :csv, :csvFinal, :csvUser]
+  #before action functions can be found in the sessions_helper file
 
   #check to make sure user is logged in before rendering page
   #create a new user object
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
       flash[:danger] = "Please Login First"
       redirect_to "/login"
     end
-  end
+  end 
 
   #create new user and an associated attendance record with default values
   #on success display new user page and a success message

@@ -1,6 +1,6 @@
 class AttrecordController < ApplicationController
-    before_action :logged_in_user, only: [:edit, :update]
-    before_action :correct_user, only: [:edit, :update]
+    before_action :logged_in_user
+    before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
 =begin
 The logged_in_user and correct_user functions can be found
 in the sessions helper file. 
