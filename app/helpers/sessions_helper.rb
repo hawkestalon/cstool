@@ -11,6 +11,7 @@ module SessionsHelper
     def correct_user
       unless current_user.role == 0 || current_user.role == 2
         @user = User.find(params[:id])
+        flash[:danger] = "Not Authorized"
         redirect_to(root_url) unless @user == current_user
       end
     end
