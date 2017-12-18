@@ -1,6 +1,10 @@
 class CoachingController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:new, :create, :edit, :update]
+
+  #This controller uses user_id's instead of the record ids to pull the
+  #necessary information from the models.
+
   def new
     @coach = Coach.new
     @user = User.find(params[:id])
@@ -23,7 +27,6 @@ class CoachingController < ApplicationController
   end
 
   def update
-    # this is not done yet.
     @coach = Coach.find(params[:id]) 
     @user = User.find(params[:user])
     if @coach.update(user_params)

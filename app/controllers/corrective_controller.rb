@@ -1,9 +1,11 @@
 class CorrectiveController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:new, :create, :destroy]
   def new
     @user = User.find(params[:id])
   end
+
+  #this action puts the action in a format that can be printed
   def print
     @corr = Corrective.find(params[:id])
     render "shared/_print", :layout=>false
@@ -12,8 +14,10 @@ class CorrectiveController < ApplicationController
   def create
     @user = User.find(params[:id])
     @corrective = @user.corrective.build(user_params)
+    #checks to see if the sup signed it the corrective action.
     if current_user.authenticate(params[:corrective][:supsig])
       if @corrective.save
+        #updates the record to indicate who signed it and that it was signed. 
         @corrective.update(supervisor: current_user.name, supsig: "Authenticated")
         flash[:success] = "Corrective Action Completed"
         redirect_to @user
@@ -39,6 +43,9 @@ class CorrectiveController < ApplicationController
     end
   end
 
+  #edit and update methods are for the agent signing the action
+  #and adding their comments. You can only edit the corrective action
+  #if the user_id is the same as the corrective user_id.
   def edit
     @corr = Corrective.find(params[:id])
     if @corr.user.id != current_user.id || current_user.role == 0

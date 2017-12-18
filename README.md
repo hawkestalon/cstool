@@ -28,13 +28,13 @@ Things I think you should know:
     
 Deployment: 
     I deployed this app using Nginx and Phusion Passenger and followed the tutorial found on Phusion Passenger's website.
-    The app is setup in a way that should allow it to run on different web server software such as Apache. 
+    The app is setup in a way that should allow it to run on different web server software such as Apache. Though this will change the deployment instructions.
 
     1. Make sure the most updated code is where it needs to be on the server and ensure you are in the correct directory before performing commands. 
     2. Install dependencies with the "bundle install" command.
     3. Perform Database migration and precompile assets with the "bundle exec rake assets:precompile db:migrate RAILS_ENV=production" command.
     4. Restart the app to effect the changes ("passenger-config restart-app", if using passenger).
-    5. Restart the nginx service with service nginx restart, if necessary.
+    5. Restart the nginx service with service nginx restart, if necessary.(If error occurs you may need to run the command with root priveleges using sudo).
 
     NOTE: In order to deploy to Heroku, the database would have to be changed to Postgresql. The rest of the app is not configured to run this way. Substantial changes 
         would have to be made. I do not reccommend this, nor is this app intended to be deployed to Heroku.

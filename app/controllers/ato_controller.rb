@@ -1,6 +1,10 @@
 class AtoController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
+
+  #atoToMiss helper function is found in the Miss helper file and will create a Missed
+  #hours record for any ATO that is in the past. This function is triggered on the create
+  #and show action of this controller.
   def new
     @user = User.find(params[:id])
   end
@@ -16,6 +20,7 @@ class AtoController < ApplicationController
       flash[:danger] = "Oh no! Something went wrong!"
       render 'new'
     end
+    #atoToMiss function is found the Miss Helper file.
     atoToMiss(@user)
   end
 
@@ -41,6 +46,7 @@ class AtoController < ApplicationController
     else 
       @ato = nil
     end
+    #atoToMiss function is found the Miss Helper file.
     atoToMiss(@user)
   end
 
