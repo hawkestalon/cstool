@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_r_esets/new'
+
+  get 'password_r_esets/edit'
+
   #miseed hours routes
   get 'miss/new'
   post 'miss/create'
