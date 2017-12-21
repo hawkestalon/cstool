@@ -1,2 +1,12 @@
-<h1>PasswordREsets#new</h1>
-<p>Find me in app/views/password_r_esets/new.html.erb</p>
+<% provide(:title, "Reset Password") %>
+      <h1 style="text-align: center;">Reset Password</h1>
+<div class="login">
+    <%= form_for(@user, url: password_create_path(params[:id])) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "loginField" %>
+
+      <%= f.submit "Send Email", class: "loginField" %>
+    <% end %>
+</div>

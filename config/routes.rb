@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'password_r_esets/new'
-
-  get 'password_r_esets/edit'
+  get 'password/new', to: 'password_resets#new'
+  get 'password/edit', to: 'password_resets#edit'
+  post 'password/create', to: 'password_resets#create'
 
   #miseed hours routes
   get 'miss/new'

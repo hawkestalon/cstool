@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    attr_accessor :reset_token
     validates :name,  presence: true, length: { maximum: 50 }
     validates :email, presence: true
     validates :password, length: { minimum: 6 }, :on=>:create

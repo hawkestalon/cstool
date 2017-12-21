@@ -1,4 +1,4 @@
-  <div class="col-md-6 col-md-offset-3">
+  <div>
     <%= form_for(:session, url: login_path) do |f| %>
     <h2 style="text-align: center">Login</h2>
     <div class="login">
@@ -8,6 +8,7 @@
       <%#= f.label :password %>
       <%= f.password_field :password, placeholder: "Password", class: "loginField" %>
       <br>
-      <%= f.submit "Log in", class: "loginField loginButton" %>
+      <%= f.submit "Log in", class: "loginField loginButton" %><br>
+      <%= link_to "Reset Password", "/password/new", class: "profileLink" %>
     </div>
     <% end %>
