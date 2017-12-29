@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.attrecords.create(PTO: 0, FMLA: 0, days: 3)
       flash[:success] = "User Created"
-      render 'new'
+      redirect_to "/teamchart"
     else
       flash[:danger] = "Error! User not Created"
       render 'new'
@@ -66,8 +66,16 @@ class UsersController < ApplicationController
     # array of users by team
     @users = []
     @team.each do |key, value|
-      temp = User.where(:team => key).order(role: :desc)
-      @users.push(temp)
+      temp = User.where(:team => key)
+      array = []
+      temp.each do |x|
+        if x.role == 2
+          array.unshift(x)
+        else
+          array.push(x)
+        end
+      end
+      @users.push(array)
     end
   end
 
@@ -89,7 +97,7 @@ class UsersController < ApplicationController
   end
 
   def csvUser 
-    
+    #empty action/method
   end
 
   def csv
@@ -153,6 +161,7 @@ class UsersController < ApplicationController
   def password
     @user = User.find(params[:id])
   end
+  
   def confirm
     @user = User.find(params[:id])
     if @user.id != current_user.id

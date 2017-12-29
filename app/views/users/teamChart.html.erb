@@ -19,11 +19,11 @@
                     <%array.each do |user|%>
                         <tr>
                             <%if user.role == 2%>
-                                <td style="background-color: lightgreen; border-style: none;">
+                                <td style="border-bottom-style: solid; border-top-style: none; border-left-style: none; border-right-style: none;">
                             <%else%>
                                 <td style="border-style: none;">
                             <%end%>
-                                <%= user.name%>
+                            <%= user.name%>
                             </td>
                         </tr>
                     <%end%>

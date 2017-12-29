@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  #password reset // currently disabled
   get 'password/new', to: 'password_resets#new'
   get 'password/edit', to: 'password_resets#edit'
   post 'password/create', to: 'password_resets#create'
