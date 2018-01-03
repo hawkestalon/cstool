@@ -203,3 +203,27 @@ table {
 .attTd {
     border: none;
 }
+// Documents styles
+.document {
+    color: black;
+}
+
+.list {
+    padding: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+.list:hover{
+    background-color: #1fbcef3d;
+    // cursor: pointer;
+}
+.section {
+    margin: auto;
+    // margin-top: 0;
+    display:block;
+    width: 40%;
+}
+.docLink{
+    color: black;
+    text-decoration: underline;
+}

@@ -11,7 +11,7 @@
             <li><%= link_to "My Agents", myTeam_path%></li>
         <%end%>
     <% end %>
-    <li>Documents</li>
+    <li><%= link_to "Documents", "/documents/home"%></li>
     <%if current_user != nil%>    
         <li style="float: right;"><%= image_tag("rank#{@current_user.certLevel}.png", :alt => "rss feed", class: "rank") %></li> 
         <li style="float: right; text-decoration: underline;"><%= link_to @current_user.name, "/users/#{@current_user.id}"%></li>

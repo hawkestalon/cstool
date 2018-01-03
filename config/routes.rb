@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'documents/home'
+
   #password reset // currently disabled
   get 'password/new', to: 'password_resets#new'
   get 'password/edit', to: 'password_resets#edit'
