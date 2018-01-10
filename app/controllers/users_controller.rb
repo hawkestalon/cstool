@@ -106,6 +106,7 @@ class UsersController < ApplicationController
     @content = CSV.parse(@file_contents)
     headers = ["name", "email", "employee number", "role", "team", "password", "cert level"]
     @args = []
+    #identify which fields are in which columns for use later. 
     @content[0].each_with_index do |header, index|
       header.downcase!.lstrip!
       headers.each_with_index do |h, i|
@@ -117,6 +118,7 @@ class UsersController < ApplicationController
     end
     @missing_headers = headers
     redirect = false
+    #add missing columns to the error flash.
     @missing_headers.each do |x|
       if x == "name" or x == 'email' or x == "password"
         flash[:danger] == nil ? flash[:danger] = x.capitalize : flash[:danger] += ", #{x.capitalize}"
@@ -133,6 +135,7 @@ class UsersController < ApplicationController
 
   def csvFinal
     content = CSV.parse(params[:content])
+    #get rid of header column so we don't create a user with the headers as params
     content.delete_at(0)
     args = params[:args].split(',')
     @errors = []
@@ -142,12 +145,14 @@ class UsersController < ApplicationController
       params = Hash.new
       args.each_with_index do |arg, index|
         if index % 2 == 0 and index + 1 <= args.size
+          #change header to match database record for employee number and cert level
           arg = "employee" if arg.lstrip == "employee number"
           arg = "certLevel" if arg.lstrip == "cert level" or arg.lstrip == "certification level"
           params[arg.lstrip] = entry[args[index + 1].to_i]
           @errors_why.push("#{arg.lstrip.capitalize} field empty") if entry[args[index + 1].to_i] == nil and (arg.lstrip == "password" or arg.lstrip == "name" or arg.lstrip == "email")
         end
       end
+      #no confirm password field is looked for or asked for, set password entered to password confirm
       params["password_confirmation"] = params["password"]
       user = User.new(params)
       if user.save
@@ -158,10 +163,12 @@ class UsersController < ApplicationController
     end
   end
 
+  #get user record so they can change their password
   def password
     @user = User.find(params[:id])
   end
   
+  #change the password. Make sure they know their previous password. 
   def confirm
     @user = User.find(params[:id])
     if @user.id != current_user.id
